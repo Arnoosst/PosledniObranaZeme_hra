@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class World {
     private static HashMap<Integer, Location> map = new HashMap<>();
-
+    private static int currentLocation = 1;
 
     public static void loadMap(String soubor) {
         try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
@@ -21,7 +21,6 @@ public class World {
                     neighbor.add(Integer.parseInt(s));
                 }
                 map.put(id, new Location(id, nazev, neighbor));
-
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -29,5 +28,19 @@ public class World {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public static boolean moveTo(int location) {
+        Location loc = map.get(currentLocation);
+        if (map.containsKey(location)) {
+            for (int neighbor : loc.getNeighbor()) {
+                if (neighbor == location) {
+                    currentLocation = location;
+                    System.out.println(currentLocation);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
