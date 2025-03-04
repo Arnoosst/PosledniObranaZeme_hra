@@ -43,4 +43,7 @@ public class World {
         return false;
     }
 
+    public static int getCurrentLocation() {
+        return currentLocation;
+    }
 }
