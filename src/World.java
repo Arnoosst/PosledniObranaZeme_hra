@@ -36,11 +36,11 @@ public class World {
             for (int neighbor : loc.getNeighbor()) {
                 if (neighbor == location) {
                     currentLocation = location;
-                    System.out.println(currentLocation);
                     return true;
                 }
             }
         }
         return false;
     }
+
 }
