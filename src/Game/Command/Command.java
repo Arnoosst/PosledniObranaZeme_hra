@@ -1,4 +1,4 @@
-package Command;
+package Game.Command;
 
 public abstract class Command {
     public abstract String execute();

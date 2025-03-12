@@ -1,6 +1,6 @@
-package NPC;
+package Game.NPC;
 
-import Items.Item;
+import Game.Items.Item;
 
 import java.util.ArrayList;
 

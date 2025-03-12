@@ -1,6 +1,6 @@
-package Command;
+package Game.Command;
 
-public class ThrowOutItem extends Command{
+public class UseItem extends Command{
     @Override
     public String execute() {
         return "";

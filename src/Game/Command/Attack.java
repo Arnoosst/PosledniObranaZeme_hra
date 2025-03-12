@@ -1,6 +1,6 @@
-package Command;
+package Game.Command;
 
-public class IteractWithEntity extends Command{
+public class Attack extends Command{
     @Override
     public String execute() {
         return "";

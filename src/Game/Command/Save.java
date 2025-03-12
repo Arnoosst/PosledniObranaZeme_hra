@@ -1,9 +1,11 @@
-package Command;
+package Game.Command;
 
-public class Search extends Command{
+public class Save extends Command {
+
     @Override
     public String execute() {
-        return "";
+
+        return "Hra ulozena";
     }
 
     @Override

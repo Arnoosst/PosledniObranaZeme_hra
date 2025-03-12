@@ -1,4 +1,4 @@
-package Items;
+package Game.Items;
 
 public class Weapon extends Item {
     public int damageIncrease;

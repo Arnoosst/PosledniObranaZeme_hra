@@ -1,9 +1,9 @@
-package Command;
+package Game.Command;
 
 public class Exit extends Command{
     @Override
     public String execute() {
-        return "";
+        return "Hra ukoncena";
     }
 
     @Override

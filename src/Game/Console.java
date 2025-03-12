@@ -1,4 +1,6 @@
-import Command.Command;
+package Game;
+
+import Game.Command.Command;
 
 import java.util.HashMap;
 import java.util.Scanner;

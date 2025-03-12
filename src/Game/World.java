@@ -1,3 +1,5 @@
+package Game;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -5,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class World {
+public abstract class  World {
     private static HashMap<Integer, Location> map = new HashMap<>();
     private static int currentLocation = 1;
 
@@ -46,4 +48,10 @@ public class World {
     public static int getCurrentLocation() {
         return currentLocation;
     }
+
+    public static HashMap<Integer, Location> getMap() {
+        return map;
+    }
+
+
 }

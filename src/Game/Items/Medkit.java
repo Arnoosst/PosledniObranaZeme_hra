@@ -1,4 +1,4 @@
-package Items;
+package Game.Items;
 
 public class Medkit extends Item {
     private int healthIncrease;

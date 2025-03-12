@@ -1,4 +1,4 @@
-package NPC;
+package Game.NPC;
 
 public class FriendlyFoe extends Entity {
 

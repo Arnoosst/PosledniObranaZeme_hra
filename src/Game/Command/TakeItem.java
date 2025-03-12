@@ -1,6 +1,6 @@
-package Command;
+package Game.Command;
 
-public class UseItem extends Command{
+public class TakeItem extends Command{
     @Override
     public String execute() {
         return "";

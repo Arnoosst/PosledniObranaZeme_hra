@@ -1,6 +1,6 @@
-package Command;
+package Game.Command;
 
-public class Help extends Command{
+public class Search extends Command{
     @Override
     public String execute() {
         return "";

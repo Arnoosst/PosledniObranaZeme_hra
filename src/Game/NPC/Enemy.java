@@ -1,4 +1,4 @@
-package NPC;
+package Game.NPC;
 
 public class Enemy extends Entity {
     private int health;
