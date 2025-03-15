@@ -17,6 +17,15 @@ public class Inventory {
         }
     }
 
+    public boolean removeItem(Item item){
+        if(item == null){
+            return false;
+        }else {
+            inventory.remove(item);
+            return true;
+        }
+    }
+
     public ArrayList<Item> getInventory() {
         return inventory;
     }
