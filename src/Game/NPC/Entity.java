@@ -3,15 +3,20 @@ package Game.NPC;
 public class Entity {
     private String name;
     private int id;
+    private int plaetId;
     private String speach;
 
-    public Entity(String name, int id, String speach) {
+    public Entity(String speach, String name, int id, int plaetId) {
+        this.speach = speach;
         this.name = name;
         this.id = id;
-        this.speach = speach;
+        this.plaetId = plaetId;
     }
 
     public Entity() {
+    }
+
+    public Entity(String speach, String name, int id) {
     }
 
     public String getName() {

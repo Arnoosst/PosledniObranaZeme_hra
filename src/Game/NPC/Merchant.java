@@ -8,8 +8,8 @@ public class Merchant extends Item {
 
     private ArrayList<Item> items;
 
-    public Merchant(String itemName, ArrayList<Item> items) {
-        super(itemName);
+    public Merchant(String itemName, int itemID, int planetItemID, ArrayList<Item> items) {
+        super(itemName, itemID, planetItemID);
         this.items = items;
     }
 

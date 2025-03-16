@@ -2,12 +2,12 @@ package Game.NPC;
 
 public class Enemy extends Entity {
     private int health;
-    private int power;
+    private int damage;
 
-    public Enemy(String name, int id, String speach, int health, int power) {
-        super(name, id, speach);
+    public Enemy(String speach, String name, int id, int health, int damage) {
+        super(speach, name, id);
         this.health = health;
-        this.power = power;
+        this.damage = damage;
     }
 
     public int getHealth() {
@@ -18,11 +18,11 @@ public class Enemy extends Entity {
         this.health = health;
     }
 
-    public int getPower() {
-        return power;
+    public int getDamage() {
+        return damage;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }

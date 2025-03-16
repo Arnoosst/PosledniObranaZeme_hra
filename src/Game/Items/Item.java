@@ -2,14 +2,16 @@ package Game.Items;
 
 public class Item {
     private String itemName;
+    private int itemID;
 
 
-    public Item() {
+    public Item(int itemID) {
 
     }
 
-    public Item(String itemName) {
+    public Item(String itemName, int itemID) {
         this.itemName = itemName;
+        this.itemID = itemID;
     }
 
     public String getItemName() {

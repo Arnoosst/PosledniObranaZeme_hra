@@ -2,7 +2,7 @@ package Game.NPC;
 
 public class FriendlyFoe extends Entity {
 
-    public FriendlyFoe(String name, int id, String speach) {
-        super(name, id, speach);
+    public FriendlyFoe(String speach, String name, int id, int plaetId) {
+        super(speach, name, id, plaetId);
     }
 }
