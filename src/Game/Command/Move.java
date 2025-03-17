@@ -6,13 +6,20 @@ import Game.World;
 import java.util.Scanner;
 
 public class Move extends Command {
+
+    World world = new World();
+
+    public Move(World world) {
+        this.world = world;
+    }
+
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
         int temp;
 
         System.out.println("Napište číslo planety, kam chcete přeletět:");
-        System.out.println(World.getMap());
+        System.out.println(world.getMap());
 
         while (true) {
             temp = sc.nextInt();
@@ -22,7 +29,7 @@ public class Move extends Command {
                 continue;
             }
 
-            if (World.moveTo(temp)) {
+            if (world.moveTo(temp)) {
                 return "Přesun na planetu " + temp + " byl úspěšný.";
             } else {
                 System.out.println("Na tuto planetu nelze přiletět. Zadejte znovu:");

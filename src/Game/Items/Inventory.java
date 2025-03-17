@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private ArrayList<Item> inventory;
+    private static ArrayList<Item> inventory;
     private int coins;
     private boolean haveKey;
 
-    public boolean addItem(Item item){
+    public static boolean addItem(Item item){
         if(item == null){
             return false;
         }else {
@@ -17,7 +17,7 @@ public class Inventory {
         }
     }
 
-    public boolean removeItem(Item item){
+    public static boolean removeItem(Item item){
         if(item == null){
             return false;
         }else {
@@ -26,7 +26,7 @@ public class Inventory {
         }
     }
 
-    public ArrayList<Item> getInventory() {
+    public static ArrayList<Item> getInventory() {
         return inventory;
     }
 

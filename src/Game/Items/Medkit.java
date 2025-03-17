@@ -14,6 +14,8 @@ public class Medkit extends Item {
         this.healthIncrease = healthIncrease;
     }
 
+
+
     public int getHealthIncrease() {
         return healthIncrease;
     }
@@ -21,4 +23,6 @@ public class Medkit extends Item {
     public void setHealthIncrease(int healthIncrease) {
         this.healthIncrease = healthIncrease;
     }
+
+
 }

@@ -22,5 +22,11 @@ public class Item {
         this.itemName = itemName;
     }
 
+    public int getItemID() {
+        return itemID;
+    }
 
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
 }
