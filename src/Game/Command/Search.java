@@ -2,19 +2,34 @@ package Game.Command;
 
 import Game.World;
 
-public class Search extends Command{
+public class Search extends Command {
 
-    World world = new World();
-
-    public Search(World world) {
-        this.world = world;
+    public Search() {
     }
 
     @Override
     public String execute() {
-        return "Na planetě " + (world.searchPlanetForMedkits() ? "je" : "není") + " medkit.\n" +
-                "Na planetě " + (world.searchPlanetForNpc() ? "je" : "není") + " NPC.\n" +
-                "Na planetě " + (world.searchPlanetForWeapons() ? "je" : "není") + " weapon.\n";
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < World.getMedkits().size(); i++) {
+            if (World.getCurrentLocation() == World.getMedkits().get(i).getItemID()) {
+                result.append("Medkit found!\n");
+            }
+        }
+
+        for (int i = 0; i < World.getWeapons().size(); i++) {
+            if (World.getCurrentLocation() == World.getWeapons().get(i).getItemID()) {
+                result.append("Weapons found!\n");
+            }
+        }
+
+        for (int i = 0; i < World.getNpc().size(); i++) {
+            if (World.getCurrentLocation() == World.getNpc().get(i).getId()) {
+                result.append("Friendly entity found!\n");
+            }
+        }
+
+        return result.isEmpty() ? "Nothing found!" : result.toString();
     }
 
     @Override

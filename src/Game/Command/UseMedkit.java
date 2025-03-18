@@ -1,24 +1,29 @@
 package Game.Command;
 
 import Game.Items.Inventory;
+import Game.Items.Item;
+import Game.Items.Medkit;
+import Game.Player;
 import Game.World;
 
-public class UseMedkit extends Command{
+public class UseMedkit extends Command {
 
-    World world = new World();
-
-    public UseMedkit(World world) {
-        this.world = world;
+    public UseMedkit() {
     }
 
     @Override
     public String execute() {
-        for (int i = 0; i < Inventory.getInventory().size(); i++){
-            if(Inventory.getInventory().get(i).getItemName().equals("Medkit")){
-                world.setHealth(world.getHealth()+Inventory.getInventory().get(i);
+        for (int i = 0; i < Inventory.getInventory().size(); i++) {
+            Item item = Inventory.getInventory().get(i);
+
+            if (item.getItemName().equals("Medkit")) {
+                Medkit medkit = (Medkit) item;
+                Player.setHealth(Player.getHealth() + medkit.getHealthIncrease());
+                Inventory.getInventory().remove(i);
+                return "Použil jsi Medkit! Zdraví zvýšeno o " + medkit.getHealthIncrease() + ".";
             }
         }
-        return "";
+        return "Nemáš žádný Medkit!";
     }
 
     @Override

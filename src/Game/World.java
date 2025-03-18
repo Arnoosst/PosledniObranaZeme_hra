@@ -17,15 +17,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class  World {
-    private  HashMap<Integer, Location> map = new HashMap<>();
-    private  ArrayList<Entity> enemy = new ArrayList<>();
-    private  HashMap<Integer, Entity> npc = new HashMap<>();
-    private  ArrayList<Item> weapons = new ArrayList<>();
-    private  ArrayList<Item> medkits = new ArrayList<>();
-    private  int currentLocation = 1;
-    private int health = 100;
+    private static HashMap<Integer, Location> map = new HashMap<>();
+    private static ArrayList<Entity> enemy = new ArrayList<>();
+    private static HashMap<Integer, Entity> npc = new HashMap<>();
+    private static ArrayList<Item> weapons = new ArrayList<>();
+    private static ArrayList<Item> medkits = new ArrayList<>();
+    private static int currentLocation = 1;
 
-    public World() {
+    public  World() {
         loadMap("map.txt");
         loadEnemy("enemy");
         loadMedKits("medkits");
@@ -132,7 +131,7 @@ public class  World {
 
 
 
-    public  boolean moveTo(int location) {
+    public static boolean moveTo(int location) {
         Location loc = map.get(currentLocation);
         if (map.containsKey(location)) {
             for (int neighbor : loc.getNeighbor()) {
@@ -146,85 +145,41 @@ public class  World {
     }
 
 
-    public boolean searchPlanetForMedkits(){
-        for(int i = 0; i < medkits.size(); i++) {
-            if (currentLocation == medkits.get(i).getItemID()) {
-                return true;
-            }else {
-                return false;
+    public static void removeEnemyFromLocation(Enemy en) {
+        for (int i = 0; i < enemy.size(); i++) {
+            if (enemy.get(i).getId() == en.getId()) {
+                enemy.remove(i);
+                System.out.println("Nepřítel odstraněn z lokace.");
+                break;
             }
         }
-        return false;
-    }
-
-
-    public boolean searchPlanetForWeapons(){
-        for(int i = 0; i < weapons.size(); i++) {
-            if (currentLocation == weapons.get(i).getItemID()) {
-                return true;
-            }else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public boolean searchPlanetForNpc(){
-        for(int i = 0; i < npc.size(); i++) {
-            if (currentLocation == npc.get(i).getId()) {
-                return true;
-            }else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public List<String> getItemFromLocation() {
-        List<String> addedItems = new ArrayList<>();
-
-        for (int i = 0; i < weapons.size(); i++) {
-            if (currentLocation == weapons.get(i).getItemID()) {
-                Inventory.addItem(weapons.get(i));
-                weapons.remove(i);
-                addedItems.add("Weapon: " + weapons.get(i).getItemName());
-            }
-
-            if (currentLocation == medkits.get(i).getItemID()) {
-                Inventory.addItem(medkits.get(i));
-                medkits.remove(i);
-                addedItems.add("Medkit: " + medkits.get(i).getItemName());
-            }
-        }
-
-        return addedItems;
-    }
-
-    public boolean removeItemFromInventory(int itemID) {
-        for (int i = 0; i < Inventory.getInventory().size() ; i++) {
-            if (itemID == Inventory.getInventory().get(i).getItemID()) {
-                Inventory.removeItem(Inventory.getInventory().get(i));
-                return true;
-            }
-        }
-        return false;
     }
 
 
 
-    public  int getCurrentLocation() {
+
+    public static int getCurrentLocation() {
         return currentLocation;
     }
 
-    public  HashMap<Integer, Location> getMap() {
+    public static HashMap<Integer, Location> getMap() {
         return map;
     }
 
-    public int getHealth() {
-        return health;
+
+    public static ArrayList<Entity> getEnemy() {
+        return enemy;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public static HashMap<Integer, Entity> getNpc() {
+        return npc;
+    }
+
+    public static ArrayList<Item> getWeapons() {
+        return weapons;
+    }
+
+    public static ArrayList<Item> getMedkits() {
+        return medkits;
     }
 }

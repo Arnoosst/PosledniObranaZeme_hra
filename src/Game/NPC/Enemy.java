@@ -10,6 +10,11 @@ public class Enemy extends Entity {
         this.damage = damage;
     }
 
+    public int takeDamage(int damage) {
+        health = health - damage;
+        return health;
+    }
+
     public int getHealth() {
         return health;
     }

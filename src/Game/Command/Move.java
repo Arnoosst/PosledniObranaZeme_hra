@@ -7,11 +7,9 @@ import java.util.Scanner;
 
 public class Move extends Command {
 
-    World world = new World();
+    public Move() {}
 
-    public Move(World world) {
-        this.world = world;
-    }
+
 
     @Override
     public String execute() {
@@ -19,7 +17,7 @@ public class Move extends Command {
         int temp;
 
         System.out.println("Napište číslo planety, kam chcete přeletět:");
-        System.out.println(world.getMap());
+        System.out.println(World.getMap());
 
         while (true) {
             temp = sc.nextInt();
@@ -29,7 +27,7 @@ public class Move extends Command {
                 continue;
             }
 
-            if (world.moveTo(temp)) {
+            if (World.moveTo(temp)) {
                 return "Přesun na planetu " + temp + " byl úspěšný.";
             } else {
                 System.out.println("Na tuto planetu nelze přiletět. Zadejte znovu:");

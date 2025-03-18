@@ -6,7 +6,6 @@ public class Inventory {
 
     private static ArrayList<Item> inventory;
     private int coins;
-    private boolean haveKey;
 
     public static boolean addItem(Item item){
         if(item == null){
@@ -37,13 +36,5 @@ public class Inventory {
 
     public void setCoins(int coins) {
         this.coins = coins;
-    }
-
-    public boolean getHaveKey() {
-        return haveKey;
-    }
-
-    public void setHaveKey(boolean haveKey) {
-        this.haveKey = haveKey;
     }
 }
