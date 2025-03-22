@@ -8,27 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TakeItem extends Command{
+    private World world;
+    private Inventory inventory;
 
-    public TakeItem() {
+    public TakeItem(World world, Inventory inventory) {
+        this.world = world;
+        this.inventory = inventory;
     }
 
     @Override
     public String execute() {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < World.getWeapons().size(); i++) {
-            if (World.getCurrentLocation() == World.getWeapons().get(i).getItemID()) {
-                Inventory.addItem(World.getWeapons().get(i));
-                result.append("Vzal jsi zbraň: ").append(World.getWeapons().get(i).getItemName());
-                World.getWeapons().remove(i);
+        for (int i = 0; i < world.getWeapons().size(); i++) {
+            if (world.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
+                inventory.addItem(world.getWeapons().get(i));
+                result.append("Vzal jsi zbraň: ").append(world.getWeapons().get(i).getItemName());
+                world.getWeapons().remove(i);
             }
         }
 
-        for (int i = 0; i < World.getMedkits().size(); i++) {
-            if (World.getCurrentLocation() == World.getMedkits().get(i).getItemID()) {
-                Inventory.addItem(World.getMedkits().get(i));
+        for (int i = 0; i < world.getMedkits().size(); i++) {
+            if (world.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
+                inventory.addItem(world.getMedkits().get(i));
                 result.append("Vzal jsi medkit.");
-                World.getMedkits().remove(i);
+                world.getMedkits().remove(i);
             }
         }
 

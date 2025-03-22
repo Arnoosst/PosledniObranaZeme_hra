@@ -3,21 +3,14 @@ package Game.NPC;
 public class Entity {
     private String name;
     private int id;
-    private int plaetId;
     private String speach;
 
-    public Entity(String speach, String name, int id, int plaetId) {
+    public Entity(String speach, String name, int id) {
         this.speach = speach;
         this.name = name;
         this.id = id;
-        this.plaetId = plaetId;
     }
 
-    public Entity() {
-    }
-
-    public Entity(String speach, String name, int id) {
-    }
 
     public String getName() {
         return name;
@@ -42,4 +35,5 @@ public class Entity {
     public void setSpeach(String speach) {
         this.speach = speach;
     }
+
 }

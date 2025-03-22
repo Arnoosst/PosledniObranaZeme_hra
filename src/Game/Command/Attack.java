@@ -8,50 +8,54 @@ import Game.Player;
 import Game.World;
 
 public class Attack extends Command {
+
+    private World world;
+    private Player player;
+    private Inventory inventory;
+
+    public Attack(World world, Player player, Inventory inventory) {
+        this.world = world;
+        this.player = player;
+        this.inventory = inventory;
+    }
+
     @Override
     public String execute() {
-        Enemy en = null;
-        int damageIncrease = 0;
-
-        for (int i = 0; i < World.getEnemy().size(); i++) {
-            if (World.getCurrentLocation() == World.getEnemy().get(i).getId()) {
-                en = (Enemy) World.getEnemy().get(i);
-                break;
-            }
-        }
-
+        Enemy en = world.returnenemyInLocation();
         if (en == null) {
             return "Žádný nepřítel v této lokaci.";
         }
 
+        int damageIncrease = 0;
 
-        for (int i = 0; i < Inventory.getInventory().size(); i++) {
-            Item item = Inventory.getInventory().get(i);
-            if (item.getItemName().equals("weapon")) {
+        for (Item item : inventory.getInventory()) {
+            if (item instanceof Weapon) {
                 Weapon weapon = (Weapon) item;
                 damageIncrease += weapon.getDamageIncrease();
             }
         }
 
 
-        while (en.getHealth() > 0 && Player.getHealth() > 0) {
-            en.takeDamage(Player.giveDamage(damageIncrease));
-            Player.takeDamage(en.getDamage());
+        while (en.getHealth() > 0 && player.getHealth() > 0) {
+            en.takeDamage(player.giveDamage(damageIncrease));
+
 
             if (en.getHealth() <= 0) {
-                World.removeEnemyFromLocation(en);
+                world.removeEnemyFromLocation(en);
                 return "Nepřítel byl poražen!";
-
             }
 
-            if (Player.getHealth() <= 0) {
-                System.out.println("Hráč byl poražen!");
-                exit();
+
+            player.takeDamage(en.getDamage());
+
+
+            if (player.getHealth() <= 0) {
+                return "Hráč byl poražen!";
             }
         }
+
         return "Chyba";
     }
-
 
     @Override
     public boolean exit() {

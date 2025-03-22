@@ -1,0 +1,3 @@
+2;20;Medkit
+4;40;Medkit
+6;60;Medkit

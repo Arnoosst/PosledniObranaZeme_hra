@@ -18,22 +18,22 @@ import java.util.List;
 
 public class  World {
     private static HashMap<Integer, Location> map = new HashMap<>();
-    private static ArrayList<Entity> enemy = new ArrayList<>();
-    private static HashMap<Integer, Entity> npc = new HashMap<>();
-    private static ArrayList<Item> weapons = new ArrayList<>();
-    private static ArrayList<Item> medkits = new ArrayList<>();
+    private  ArrayList<Entity> enemy = new ArrayList<>();
+    private  ArrayList<Entity> npc = new ArrayList<>();
+    private  ArrayList<Item> weapons = new ArrayList<>();
+    private  ArrayList<Item> medkits = new ArrayList<>();
     private static int currentLocation = 1;
 
     public  World() {
-        loadMap("map.txt");
-        loadEnemy("enemy");
-        loadMedKits("medkits");
-        loadWeapons("weapon");
-        loadNpc("npc");
+        loadMap();
+        loadEnemy();
+        loadMedKits();
+        loadWeapons();
+        loadNpc();
     }
 
-    public  void loadMap(String soubor) {
-        try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
+    public  void loadMap() {
+        try (BufferedReader br = new BufferedReader(new FileReader("map.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -53,8 +53,8 @@ public class  World {
 
     }
 
-    public  void loadWeapons(String soubor) {
-        try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
+    public  void loadWeapons() {
+        try (BufferedReader br = new BufferedReader(new FileReader("weapon.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -63,6 +63,7 @@ public class  World {
                 int damage = Integer.parseInt(parts[2]);
                 weapons.add(new Weapon(name, id, damage));
             }
+            System.out.println(weapons);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -71,8 +72,8 @@ public class  World {
 
     }
 
-    public  void loadMedKits(String soubor) {
-        try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
+    public  void loadMedKits() {
+        try (BufferedReader br = new BufferedReader(new FileReader("medkits.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -81,6 +82,7 @@ public class  World {
                 String name = parts[2];
                 medkits.add(new Medkit(name, id, health));
             }
+            System.out.println(medkits);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -89,8 +91,8 @@ public class  World {
 
     }
 
-    public  void loadEnemy(String soubor) {
-        try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
+    public  void loadEnemy() {
+        try (BufferedReader br = new BufferedReader(new FileReader("enemy.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -101,6 +103,10 @@ public class  World {
                 int damage = Integer.parseInt(parts[4]);
                 enemy.add(new Enemy(speech, name, id, health, damage));
             }
+            for (Entity en : enemy) {
+                System.out.println("Nepřítel: " + en.getId());
+            }
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -109,18 +115,18 @@ public class  World {
 
     }
 
-    public  void loadNpc(String soubor) {
-        try (BufferedReader br = new BufferedReader(new FileReader(soubor))) {
+    public  void loadNpc() {
+        try (BufferedReader br = new BufferedReader(new FileReader("npc.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 String speech = parts[2];
-                int idPlanet = Integer.parseInt(parts[3]);
 
-                npc.put(id, new FriendlyFoe(speech, name, id, idPlanet));
+                npc.add(new FriendlyFoe(speech, name, id));
             }
+            System.out.println(npc);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -145,7 +151,7 @@ public class  World {
     }
 
 
-    public static void removeEnemyFromLocation(Enemy en) {
+    public  void removeEnemyFromLocation(Enemy en) {
         for (int i = 0; i < enemy.size(); i++) {
             if (enemy.get(i).getId() == en.getId()) {
                 enemy.remove(i);
@@ -155,31 +161,69 @@ public class  World {
         }
     }
 
+    public Enemy returnenemyInLocation() {
+        System.out.println("Aktuální lokace: " + currentLocation);
+        System.out.println("Seznam nepřátel: " + enemy.size());
 
+        for (Entity en : enemy) {
+            System.out.println("Nepřítel ID: " + en.getId());
+
+            if (currentLocation == en.getId()) {
+                System.out.println("Nepřítel nalezen!");
+                return (Enemy) en;
+            }
+        }
+
+        System.out.println("Žádný nepřítel nebyl nalezen.");
+        return null;
+    }
 
 
     public static int getCurrentLocation() {
         return currentLocation;
     }
 
+    public static void setCurrentLocation(int currentLocation) {
+        World.currentLocation = currentLocation;
+    }
+
+    public ArrayList<Item> getMedkits() {
+        return medkits;
+    }
+
+    public void setMedkits(ArrayList<Item> medkits) {
+        this.medkits = medkits;
+    }
+
+    public ArrayList<Item> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(ArrayList<Item> weapons) {
+        this.weapons = weapons;
+    }
+
+    public ArrayList<Entity> getNpc() {
+        return npc;
+    }
+
+    public void setNpc(ArrayList<Entity> npc) {
+        this.npc = npc;
+    }
+
+    public ArrayList<Entity> getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(ArrayList<Entity> enemy) {
+        this.enemy = enemy;
+    }
+
     public static HashMap<Integer, Location> getMap() {
         return map;
     }
 
-
-    public static ArrayList<Entity> getEnemy() {
-        return enemy;
-    }
-
-    public static HashMap<Integer, Entity> getNpc() {
-        return npc;
-    }
-
-    public static ArrayList<Item> getWeapons() {
-        return weapons;
-    }
-
-    public static ArrayList<Item> getMedkits() {
-        return medkits;
+    public static void setMap(HashMap<Integer, Location> map) {
+        World.map = map;
     }
 }

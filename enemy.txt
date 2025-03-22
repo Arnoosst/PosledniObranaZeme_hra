@@ -1,0 +1,7 @@
+2;Xar'qun Scout;50;"Zničit vetřelce!";10
+3;Xar'qun Warrior;80;"Smrt lidské rase!";15
+4;Xar'qun Guardian;100;"Nikdo neprojde!";20
+5;Xar'qun Elite;120;"Cítím tvůj strach!";25
+6;Xar'qun Commander;150;"Tahle planeta je naše!";30
+7;Xar'qun Warlord;180;"Lidstvo padne!";40
+8;Archon Xar'qun;250;"Jsem konec tvé rasy!";50

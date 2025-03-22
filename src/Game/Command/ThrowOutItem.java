@@ -7,18 +7,22 @@ import java.util.Scanner;
 
 public class ThrowOutItem extends Command{
 
-    public ThrowOutItem() {}
+    private Inventory inventory;
+
+    public ThrowOutItem(Inventory inventory) {
+        this.inventory = inventory;
+    }
 
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Jaky item chcete vyhodit z invu");
-        System.out.println(Inventory.getInventory());
+        System.out.println(inventory.getInventory());
         System.out.println("Zadejte id itemu");
         int id = sc.nextInt();
-        for (int i = 0; i < Inventory.getInventory().size() ; i++) {
-            if (id == Inventory.getInventory().get(i).getItemID()) {
-                Inventory.removeItem(Inventory.getInventory().get(i));
+        for (int i = 0; i < inventory.getInventory().size() ; i++) {
+            if (id == inventory.getInventory().get(i).getItemID()) {
+                inventory.removeItem(inventory.getInventory().get(i));
                 return "Item byl ostranen";
             }
         }

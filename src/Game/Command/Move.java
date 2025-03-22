@@ -28,6 +28,7 @@ public class Move extends Command {
             }
 
             if (World.moveTo(temp)) {
+                World.setCurrentLocation(temp);
                 return "Přesun na planetu " + temp + " byl úspěšný.";
             } else {
                 System.out.println("Na tuto planetu nelze přiletět. Zadejte znovu:");

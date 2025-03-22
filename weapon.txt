@@ -1,0 +1,3 @@
+3;Laserová puška;10
+5;Plazmová pistole;15
+7;EMP granát;25

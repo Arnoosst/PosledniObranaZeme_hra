@@ -4,16 +4,21 @@ import Game.World;
 
 public class IteractWithEntity extends Command{
 
-    public IteractWithEntity() {
+     private World world;
+
+
+    public IteractWithEntity(World world) {
+        this.world = world;
     }
+
 
     @Override
     public String execute() {
 
-        for (int i = 0; i < World.getNpc().size(); i++) {
-            if (World.getCurrentLocation() == World.getNpc().get(i).getId()) {
-                System.out.println("Ahoj jmenuji se:" + World.getNpc().get(i).getName());
-                return World.getNpc().get(i).getSpeach();
+        for (int i = 0; i < world.getNpc().size(); i++) {
+            if (world.getCurrentLocation() == world.getNpc().get(i).getId()) {
+                System.out.println("Ahoj jmenuji se:" + world.getNpc().get(i).getName());
+                return world.getNpc().get(i).getSpeach();
             }
         }
         return "Tady nikdo neni";

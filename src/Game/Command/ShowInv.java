@@ -5,13 +5,16 @@ import Game.Items.Inventory;
 public class ShowInv extends Command {
 
 
-    public ShowInv() {
+    private Inventory inv;
+
+    public ShowInv(Inventory inv) {
+        this.inv = inv;
     }
 
     @Override
     public String execute() {
 
-        return "Vas inventar: " + Inventory.getInventory().toString();
+        return "Vas inventar: " + inv.getInventory().toString();
     }
 
     @Override

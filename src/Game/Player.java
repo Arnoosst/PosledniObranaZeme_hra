@@ -4,9 +4,9 @@ public class Player {
     private static int health;
     private static int damage;
 
-    public Player(int health, int damage) {
-        this.health = health;
-        this.damage = damage;
+    public Player() {
+        this.health = 100;
+        this.damage = 10;
     }
 
     public static int takeDamage(int damage) {

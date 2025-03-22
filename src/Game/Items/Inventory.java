@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private static ArrayList<Item> inventory;
+    private  ArrayList<Item> inventory = new ArrayList<>();
     private int coins;
 
-    public static boolean addItem(Item item){
+    public  boolean addItem(Item item){
         if(item == null){
             return false;
         }else {
@@ -16,7 +16,7 @@ public class Inventory {
         }
     }
 
-    public static boolean removeItem(Item item){
+    public  boolean removeItem(Item item){
         if(item == null){
             return false;
         }else {
@@ -25,7 +25,7 @@ public class Inventory {
         }
     }
 
-    public static ArrayList<Item> getInventory() {
+    public  ArrayList<Item> getInventory() {
         return inventory;
     }
 
