@@ -12,6 +12,7 @@ public class Attack extends Command {
     private World world;
     private Player player;
     private Inventory inventory;
+    private Exit exit;
 
     public Attack(World world, Player player, Inventory inventory) {
         this.world = world;
@@ -42,7 +43,19 @@ public class Attack extends Command {
 
             if (en.getHealth() <= 0) {
                 world.removeEnemyFromLocation(en);
-                return "Nepřítel byl poražen!";
+                if (World.getCurrentLocation() == 4) {
+                    System.out.println("⚠️ Boj skončil! ⚠️");
+                    System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
+                    System.out.println("🫧 Získal jsi OXYGEN TANK! 🫧");
+                    World.setOxygen(true);
+                }
+                if (World.getCurrentLocation() == 5) {
+                    System.out.println("⚠️ Boj skončil! ⚠️");
+                    System.out.println("Boss padl k zemi... ale co to má u sebe?");
+                    System.out.println("🌊 Získal jsi UNDERWATER SUIT! 🌊");
+                    World.setUnderWaterSuit(true);
+                }
+                return "Nepřítel poražen. Získáváš respekt vesmíru!";
             }
 
 
@@ -50,7 +63,8 @@ public class Attack extends Command {
 
 
             if (player.getHealth() <= 0) {
-                return "Hráč byl poražen!";
+                System.out.println("Hrac porazen");
+                return exit.execute();
             }
         }
 

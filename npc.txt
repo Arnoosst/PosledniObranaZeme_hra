@@ -1,5 +1,4 @@
 1;Velitel John Reese;Vojáku, tahle mise rozhodne o osudu lidstva. Nezklam nás.
-1;Dr. Evelyn Hayes;Alexi, mám pro tebe důležité informace o mimozemské technologii.
 2;Seržant Miller;Mars je peklo, ale my ho vezmeme zpátky. Drž se.
 3;Inženýr Novak;Na tomhle asteroidu je něco zvláštního... musíme to prozkoumat.
 4;Vědec Patel;Ty ledové jeskyně skrývají víc, než si myslíme. Dávej pozor.

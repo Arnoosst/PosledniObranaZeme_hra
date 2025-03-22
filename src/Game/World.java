@@ -23,6 +23,9 @@ public class  World {
     private  ArrayList<Item> weapons = new ArrayList<>();
     private  ArrayList<Item> medkits = new ArrayList<>();
     private static int currentLocation = 1;
+    private static int killCount = 0;
+    private static Boolean oxygen = false;
+    private static Boolean underWaterSuit = false;
 
     public  World() {
         loadMap();
@@ -31,6 +34,8 @@ public class  World {
         loadWeapons();
         loadNpc();
     }
+
+
 
     public  void loadMap() {
         try (BufferedReader br = new BufferedReader(new FileReader("map.txt"))) {
@@ -61,7 +66,8 @@ public class  World {
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 int damage = Integer.parseInt(parts[2]);
-                weapons.add(new Weapon(name, id, damage));
+                int price = Integer.parseInt(parts[3]);
+                weapons.add(new Weapon(name, id, damage, price));
             }
             System.out.println(weapons);
         } catch (FileNotFoundException e) {
@@ -80,7 +86,8 @@ public class  World {
                 int id = Integer.parseInt(parts[0]);
                 int health = Integer.parseInt(parts[1]);
                 String name = parts[2];
-                medkits.add(new Medkit(name, id, health));
+                int price = Integer.parseInt(parts[3]);
+                medkits.add(new Medkit(name, id, health, price));
             }
             System.out.println(medkits);
         } catch (FileNotFoundException e) {
@@ -154,8 +161,8 @@ public class  World {
     public  void removeEnemyFromLocation(Enemy en) {
         for (int i = 0; i < enemy.size(); i++) {
             if (enemy.get(i).getId() == en.getId()) {
+                killCount++;
                 enemy.remove(i);
-                System.out.println("Nepřítel odstraněn z lokace.");
                 break;
             }
         }
@@ -191,39 +198,40 @@ public class  World {
         return medkits;
     }
 
-    public void setMedkits(ArrayList<Item> medkits) {
-        this.medkits = medkits;
-    }
 
     public ArrayList<Item> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(ArrayList<Item> weapons) {
-        this.weapons = weapons;
-    }
 
     public ArrayList<Entity> getNpc() {
         return npc;
     }
 
-    public void setNpc(ArrayList<Entity> npc) {
-        this.npc = npc;
-    }
-
-    public ArrayList<Entity> getEnemy() {
-        return enemy;
-    }
-
-    public void setEnemy(ArrayList<Entity> enemy) {
-        this.enemy = enemy;
-    }
 
     public static HashMap<Integer, Location> getMap() {
         return map;
     }
 
-    public static void setMap(HashMap<Integer, Location> map) {
-        World.map = map;
+
+    public static int getKillCount() {
+        return killCount;
+    }
+
+
+    public static Boolean getOxygen() {
+        return oxygen;
+    }
+
+    public static void setOxygen(Boolean oxygen) {
+        World.oxygen = oxygen;
+    }
+
+    public static Boolean getUnderWaterSuit() {
+        return underWaterSuit;
+    }
+
+    public static void setUnderWaterSuit(Boolean underWaterSuit) {
+        World.underWaterSuit = underWaterSuit;
     }
 }

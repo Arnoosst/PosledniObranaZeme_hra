@@ -25,16 +25,17 @@ public class Inventory {
         }
     }
 
+    public Item locateItemFromId(int id){
+        for (Item item : inventory) {
+            if (item.getItemID() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public  ArrayList<Item> getInventory() {
         return inventory;
     }
 
-
-    public int getCoins() {
-        return coins;
-    }
-
-    public void setCoins(int coins) {
-        this.coins = coins;
-    }
 }

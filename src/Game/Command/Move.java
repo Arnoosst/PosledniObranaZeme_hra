@@ -27,6 +27,18 @@ public class Move extends Command {
                 continue;
             }
 
+            if (temp == 8 && World.getKillCount() < 6) {
+                return "Musíš zabít všechny bosse na planetách!";
+            }
+
+            if (temp == 5 && !World.getOxygen()) {
+                return "Musíš získat oxygen tank, abys mohl přistát na Titanu!";
+            }
+
+            if (temp == 6 && !World.getUnderWaterSuit()) {
+                return "Musíš získat podvodní oblek, abys mohl přistát na Neptunu!";
+            }
+
             if (World.moveTo(temp)) {
                 World.setCurrentLocation(temp);
                 return "Přesun na planetu " + temp + " byl úspěšný.";

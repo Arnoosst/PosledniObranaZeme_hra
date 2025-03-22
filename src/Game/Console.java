@@ -2,6 +2,8 @@ package Game;
 
 import Game.Command.*;
 import Game.Items.Inventory;
+import Game.Items.Item;
+import Game.NPC.Merchant;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -14,6 +16,7 @@ public class Console {
     private World world;
     private Inventory inventory;
     private Player player;
+    private Merchant merchant;
 
 
     public Console() {
@@ -25,6 +28,7 @@ public class Console {
         world = new World();
         inventory = new Inventory();
         player = new Player();
+        merchant = new Merchant();
         scanner = new Scanner(System.in);
         commands.put("jdi", new Move());
         commands.put("prohledat", new Search(world));
@@ -35,7 +39,8 @@ public class Console {
         commands.put("medkit", new UseMedkit(inventory, player));
         commands.put("konec", new Exit());
         commands.put("zautocit", new Attack(world, player, inventory));
-        commands.put("inventar", new ShowInv(inventory));
+        commands.put("staty", new ShowStats(inventory, player));
+        commands.put("merchant", new MerchantCommand(world, merchant, inventory));
 
     }
 

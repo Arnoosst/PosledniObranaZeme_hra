@@ -1,19 +1,16 @@
 package Game.Items;
 
 public class Weapon extends Item {
-    public int damageIncrease;
+    private int damageIncrease;
 
 
-    public Weapon(String itemName, int itemID, int damageIncrease) {
-        super(itemName, itemID);
+    public Weapon(String itemName, int itemID,int damageIncrease, int itemPrice) {
+        super(itemName, itemID, itemPrice);
         this.damageIncrease = damageIncrease;
     }
+
 
     public int getDamageIncrease() {
         return damageIncrease;
-    }
-
-    public void setDamageIncrease(int damageIncrease) {
-        this.damageIncrease = damageIncrease;
     }
 }

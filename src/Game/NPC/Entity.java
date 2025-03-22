@@ -16,10 +16,6 @@ public class Entity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getId() {
         return id;
     }
@@ -32,8 +28,5 @@ public class Entity {
         return speach;
     }
 
-    public void setSpeach(String speach) {
-        this.speach = speach;
-    }
 
 }
