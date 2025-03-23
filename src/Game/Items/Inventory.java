@@ -10,7 +10,7 @@ public class Inventory {
 
     public Inventory() {
         this.inventory = new ArrayList<>();
-        this.coins = 100;
+        this.coins = 500;
     }
 
     public boolean addItem(Item item) {

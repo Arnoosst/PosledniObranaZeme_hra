@@ -17,7 +17,6 @@ public class Console {
     private Inventory inventory;
     private Player player;
     private Merchant merchant;
-    private MainMenu mainMenu= new MainMenu();
 
 
     public Console() {
@@ -58,7 +57,7 @@ public class Console {
 
 
     public void start() {
-        mainMenu.mainMenu();
+        MainMenu.mainMenu();
         initialization();
         do {
             executeCommand();

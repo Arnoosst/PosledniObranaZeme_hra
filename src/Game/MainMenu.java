@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    public MainMenu() {
-    }
 
-    public void mainMenu() {
+    public static void mainMenu() {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -17,7 +15,6 @@ public class MainMenu {
             System.out.println("===================================");
             System.out.println("1️⃣  Spustit hru");
             System.out.println("2️⃣  Nápověda");
-            System.out.println("3️⃣  Ukončit hru");
             System.out.print("💡 Vyber možnost: \n>> \n");
 
             choice = scanner.nextInt();
@@ -46,10 +43,6 @@ public class MainMenu {
                             "\n 🔹 konec - Ukončí hru" +
                             "\n 🔹 pomoc - Zobrazí tuto nápovědu");
                     break;
-                case 3:
-                    // nevim jak ukoncit hru, zeptam se na hodine
-                    System.out.println("👋 Díky za hraní! Ukončuji hru.");
-                    return;
                 default:
                     System.out.println("❌ Neplatná volba, zkus to znovu.");
             }
@@ -70,6 +63,35 @@ public class MainMenu {
         delay(1500);
         System.out.println("✅ Vše připraveno! Bitva začíná!");
         System.out.println("=====================================");
+        delay(2000);
+
+        talkToDoctor();
+    }
+
+
+    private static void talkToDoctor(){
+        System.out.println("🥼 [Dr. Evelyn Hayes]");
+        System.out.println("\"Takže… Ty jsi ten, co nás zachrání?! Vypadáš, že víš, do čeho jdeš. Nebo se to aspoň snažíš předstírat.\"");
+        delay(3000);
+        System.out.println("\n📦 \"Tady. Ber tuhle zbraň a mince jako malou šanci na přežití. Víc ti teď dát nemůžu.\"");
+        delay(3000);
+        System.out.println("\n🛒 \"Jestli to myslíš vážně, měl bys navštívit obchodníka. Najdeš ho na Zemi. Má vybavení, co ti může zachránit život – pokud na to máš.\"");
+        delay(3000);
+        System.out.println("\n🌌 \"Tam venku jsou světy, které neznáš. Každý z nich má svého vládce. A žádný z nich nenechá Zemi jen tak být.\"");
+        delay(3000);
+        System.out.println("\n🎯 \"Musíš je najít. A postarat se, aby už nepředstavovali hrozbu.\"");
+        delay(3000);
+        System.out.println("\n🔒 \"Cesta k tomu, kdo za tím vším stojí, je zavřená. Dokud nesplníš svůj úkol.\"");
+        delay(3000);
+        System.out.println("\n🛰️ \"Ale nebude to tak jednoduché. Některá místa tě bez správného vybavení prostě nepustí dál:\"");
+        delay(3000);
+        System.out.println("   🔴 \"Neprun je pro tebe teď nedostupný. Potřebuješ speciální vybavení, jinak se tam ani nedostaneš.\"");
+        delay(3000);
+        System.out.println("   🔵 \"Titan? Bez pořádné ochrany bys tam nepřežil ani minutu.\"");
+        delay(3000);
+        System.out.println("\n🔎 \"Prozkoumávej všechno. Každý kus vybavení, každý náznak, cokoliv, co by ti mohlo dát výhodu.\"");
+        delay(3000);
+        System.out.println("\n🤖 \"Tohle je všechno, co ti můžu říct. Jestli to zvládneš, nebo ne… to už záleží na tobě.\"");
     }
 
 

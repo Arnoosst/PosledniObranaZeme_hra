@@ -6,7 +6,7 @@ public class Player {
 
     public Player() {
         this.health = 100;
-        this.damage = 10;
+        this.damage = 15;
     }
 
     public  int takeDamage(int damage) {
