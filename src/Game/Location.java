@@ -17,4 +17,29 @@ public class Location {
     public ArrayList<Integer> getNeighbor() {
         return neighbor;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNeighbor(ArrayList<Integer> neighbor) {
+        this.neighbor = neighbor;
+    }
+
+    @Override
+    public String toString() {
+        return id + "."+ name ;
+    }
 }
