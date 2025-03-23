@@ -17,6 +17,7 @@ public class Console {
     private Inventory inventory;
     private Player player;
     private Merchant merchant;
+    private MainMenu mainMenu= new MainMenu();
 
 
     public Console() {
@@ -40,7 +41,7 @@ public class Console {
         commands.put("konec", new Exit());
         commands.put("zautocit", new Attack(world, player, inventory));
         commands.put("staty", new ShowStats(inventory, player));
-        commands.put("merchant", new MerchantCommand(world, merchant, inventory));
+        commands.put("obchod", new MerchantCommand(world, merchant, inventory));
 
     }
 
@@ -57,6 +58,7 @@ public class Console {
 
 
     public void start() {
+        mainMenu.mainMenu();
         initialization();
         do {
             executeCommand();

@@ -1,5 +1,8 @@
 package Game.Command;
 
+import Game.Items.Item;
+import Game.Items.Medkit;
+import Game.NPC.Entity;
 import Game.World;
 
 public class Search extends Command {
@@ -14,25 +17,25 @@ public class Search extends Command {
     public String execute() {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < world.getMedkits().size(); i++) {
-            if (world.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
-                result.append("Medkit found!\n");
+        for (Item medkit : world.getMedkits()) {
+            if (World.getCurrentLocation() == medkit.getItemID()) {
+                result.append("🩹 Našel jsi Medkit!\n");
             }
         }
 
-        for (int i = 0; i < world.getWeapons().size(); i++) {
-            if (world.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
-                result.append("Weapons found!\n");
+        for (Item weapon : world.getWeapons()) {
+            if (World.getCurrentLocation() == weapon.getItemID()) {
+                result.append("🔫 Našel jsi zbraň!\n");
             }
         }
 
-        for (int i = 0; i < world.getNpc().size(); i++) {
-            if (world.getCurrentLocation() == world.getNpc().get(i).getId()) {
-                result.append("Friendly entity found!\n");
+        for (Entity npc : world.getNpc()) {
+            if (World.getCurrentLocation() == npc.getId()) {
+                result.append("🧑‍🚀 Narazil jsi na přeživšího!\n");
             }
         }
 
-        return result.isEmpty() ? "Nothing found!" : result.toString();
+        return result.isEmpty() ? "🔍 Nic jsi nenašel!" : result.toString();
     }
 
     @Override

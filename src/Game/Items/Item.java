@@ -6,10 +6,6 @@ public class Item {
     private int itemPrice;
 
 
-    public Item(int itemID) {
-
-    }
-
     public Item(String itemName, int itemID, int itemPrice) {
         this.itemName = itemName;
         this.itemID = itemID;
@@ -39,5 +35,17 @@ public class Item {
     @Override
     public int hashCode() {
         return Integer.hashCode(itemID);
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
     }
 }

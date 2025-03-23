@@ -26,6 +26,17 @@ public class Merchant {
     }
 
 
+    public Item locateItemFromId(int id){
+        for(int i = 0; i < sortiment.size(); i++){
+            if (id == sortiment.get(i).getItemID() ){
+                return sortiment.get(i);
+            }
+        }
+        return null;
+    }
+
+
+
 
 
     public boolean buyItem(Item item) {
@@ -93,13 +104,39 @@ public class Merchant {
     }
 
 
+    public String printSortiment() {
+        String x;
+        x = "### Sortiment Merchanta ### \n";
+        for (Item item : sortiment) {
+            x += "Název: " + item.getItemName() + "\n" ;
+            x += "ID: " + item.getItemID() + "\n";
+            x += "Cena: " + item.getItemPrice()+ "\n";
+            x+= "------------------------- \n";
+        }
+        return x;
+    }
 
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public ArrayList<Item> getSortiment() {
+        return sortiment;
+    }
+
+    public void setSortiment(ArrayList<Item> sortiment) {
+        this.sortiment = sortiment;
+    }
 
     @Override
     public String toString() {
         return "Merchant{" +
-                "coins=" + coins +
-                ", sortiment=" + sortiment +
+                "sortiment=" + sortiment +
                 '}';
     }
 }

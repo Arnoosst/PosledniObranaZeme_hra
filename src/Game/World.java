@@ -69,7 +69,6 @@ public class  World {
                 int price = Integer.parseInt(parts[3]);
                 weapons.add(new Weapon(name, id, damage, price));
             }
-            System.out.println(weapons);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -89,7 +88,6 @@ public class  World {
                 int price = Integer.parseInt(parts[3]);
                 medkits.add(new Medkit(name, id, health, price));
             }
-            System.out.println(medkits);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -110,10 +108,6 @@ public class  World {
                 int damage = Integer.parseInt(parts[4]);
                 enemy.add(new Enemy(speech, name, id, health, damage));
             }
-            for (Entity en : enemy) {
-                System.out.println("Nepřítel: " + en.getId());
-            }
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -133,7 +127,6 @@ public class  World {
 
                 npc.add(new FriendlyFoe(speech, name, id));
             }
-            System.out.println(npc);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -169,19 +162,16 @@ public class  World {
     }
 
     public Enemy returnenemyInLocation() {
-        System.out.println("Aktuální lokace: " + currentLocation);
-        System.out.println("Seznam nepřátel: " + enemy.size());
 
         for (Entity en : enemy) {
-            System.out.println("Nepřítel ID: " + en.getId());
 
             if (currentLocation == en.getId()) {
-                System.out.println("Nepřítel nalezen!");
+                System.out.println("✅ Nepřítel nalezen v této lokaci!");
                 return (Enemy) en;
             }
         }
 
-        System.out.println("Žádný nepřítel nebyl nalezen.");
+        System.out.println("❌ Žádný nepřítel zde není.");
         return null;
     }
 

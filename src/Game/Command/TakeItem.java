@@ -21,22 +21,22 @@ public class TakeItem extends Command{
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < world.getWeapons().size(); i++) {
-            if (world.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
+            if (World.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
                 inventory.addItem(world.getWeapons().get(i));
-                result.append("Vzal jsi zbraň: ").append(world.getWeapons().get(i).getItemName());
+                result.append("🔫 Našel jsi zbraň: ").append(world.getWeapons().get(i).getItemName()).append("!\n");
                 world.getWeapons().remove(i);
             }
         }
 
         for (int i = 0; i < world.getMedkits().size(); i++) {
-            if (world.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
+            if (World.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
                 inventory.addItem(world.getMedkits().get(i));
-                result.append("Vzal jsi medkit.");
+                result.append("🩹 Vzal jsi si medkit!\n");
                 world.getMedkits().remove(i);
             }
         }
 
-        return result.isEmpty() ? "Nothing is here!" : result.toString();
+        return result.isEmpty() ? "🔍 Nic tu není!" : result.toString().trim();
     }
 
     @Override

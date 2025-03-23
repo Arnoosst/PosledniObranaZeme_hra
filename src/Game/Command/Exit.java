@@ -7,7 +7,7 @@ public class Exit extends Command{
 
     @Override
     public String execute() {
-        return "Hra ukoncena";
+        return "❌ Hra byla ukončena.";
     }
 
     @Override

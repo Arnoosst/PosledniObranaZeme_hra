@@ -24,10 +24,11 @@ public class Attack extends Command {
     public String execute() {
         Enemy en = world.returnenemyInLocation();
         if (en == null) {
-            return "Žádný nepřítel v této lokaci.";
+            return "❌ Žádný nepřítel v této lokaci.";
         }
 
         int damageIncrease = 0;
+
 
         for (Item item : inventory.getInventory()) {
             if (item instanceof Weapon) {
@@ -38,37 +39,44 @@ public class Attack extends Command {
 
 
         while (en.getHealth() > 0 && player.getHealth() > 0) {
-            en.takeDamage(player.giveDamage(damageIncrease));
 
+            en.takeDamage(player.giveDamage(damageIncrease));
 
             if (en.getHealth() <= 0) {
                 world.removeEnemyFromLocation(en);
+
+
                 if (World.getCurrentLocation() == 4) {
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
                     System.out.println("🫧 Získal jsi OXYGEN TANK! 🫧");
                     World.setOxygen(true);
                 }
+
                 if (World.getCurrentLocation() == 5) {
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Boss padl k zemi... ale co to má u sebe?");
                     System.out.println("🌊 Získal jsi UNDERWATER SUIT! 🌊");
                     World.setUnderWaterSuit(true);
                 }
-                return "Nepřítel poražen. Získáváš respekt vesmíru!";
+
+
+                inventory.setCoins(inventory.getCoins() + 100 * en.getId());
+                return "✅ Nepřítel poražen. Získáváš respekt vesmíru!";
             }
 
 
             player.takeDamage(en.getDamage());
 
 
+            // nevim jak ukoncit hru, zeptam se na hodine
             if (player.getHealth() <= 0) {
-                System.out.println("Hrac porazen");
+                System.out.println("💀 Hráč poražen!");
                 return exit.execute();
             }
         }
 
-        return "Chyba";
+        return "Chyba v boji!";
     }
 
     @Override

@@ -14,10 +14,12 @@ public class ShowStats extends Command {
         this.player = player;
     }
 
-    @Override
     public String execute() {
+        System.out.println(inv.printInventory());
 
-        return "Vase hp: " + player.getHealth() + "Vas damage: " + player.getDamage() + "Vas inventar: " + inv.getInventory().toString();
+        return "❤️ Zdraví: " + player.getHealth() + "\n" +
+                "⚔️ Poškození: " + player.getDamage() + "\n";
+
     }
 
     @Override

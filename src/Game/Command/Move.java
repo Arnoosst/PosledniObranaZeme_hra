@@ -16,34 +16,34 @@ public class Move extends Command {
         Scanner sc = new Scanner(System.in);
         int temp;
 
-        System.out.println("Napište číslo planety, kam chcete přeletět:");
+        System.out.println("🌍 Kam chceš letět? Zadej číslo planety:");
         System.out.println(World.getMap());
 
         while (true) {
             temp = sc.nextInt();
 
             if (temp < 1 || temp > 8) {
-                System.out.println("Planeta neexistuje, zadejte znovu:");
+                System.out.println("❌ Tahle planeta neexistuje, zkus to znovu:");
                 continue;
             }
 
             if (temp == 8 && World.getKillCount() < 6) {
-                return "Musíš zabít všechny bosse na planetách!";
+                return "🚀 Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
             }
 
             if (temp == 5 && !World.getOxygen()) {
-                return "Musíš získat oxygen tank, abys mohl přistát na Titanu!";
+                return "🔴 Potřebuješ kyslíkovou nádrž, abys přežil na Titanu!";
             }
 
             if (temp == 6 && !World.getUnderWaterSuit()) {
-                return "Musíš získat podvodní oblek, abys mohl přistát na Neptunu!";
+                return "🌊 Potřebuješ podvodní oblek, abys mohl přistát na Neptunu!";
             }
 
             if (World.moveTo(temp)) {
                 World.setCurrentLocation(temp);
-                return "Přesun na planetu " + temp + " byl úspěšný.";
+                return "✅ Přistál jsi na planetě " + World.getMap().get(temp) + "!";
             } else {
-                System.out.println("Na tuto planetu nelze přiletět. Zadejte znovu:");
+                System.out.println("🚫 Na tuto planetu nelze přistát. Zkus jinou:");
             }
         }
     }
