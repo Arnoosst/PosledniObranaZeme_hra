@@ -34,7 +34,7 @@ public class Console {
         commands.put("prohledat", new Search(world));
         commands.put("mluvit", new IteractWithEntity(world));
         commands.put("vzit", new TakeItem(world, inventory));
-        commands.put("vyhodit", new ThrowOutItem(inventory));
+        commands.put("vyhodit", new ThrowOutItem(inventory, world));
         commands.put("pomoc", new Help());
         commands.put("medkit", new UseMedkit(inventory, player));
         commands.put("konec", new Exit());
