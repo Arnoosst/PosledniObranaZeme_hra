@@ -166,12 +166,10 @@ public class  World {
         for (Entity en : enemy) {
 
             if (currentLocation == en.getId()) {
-                System.out.println("✅ Nepřítel nalezen v této lokaci!");
                 return (Enemy) en;
             }
         }
 
-        System.out.println("❌ Žádný nepřítel zde není.");
         return null;
     }
 

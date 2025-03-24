@@ -4,6 +4,7 @@ package Game.Command;
 import Game.Location;
 import Game.World;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Move extends Command {
@@ -25,34 +26,36 @@ public class Move extends Command {
 
 
         while (true) {
-            temp = sc.nextInt();
+            try {
 
-            if (temp < 1 || temp > 8) {
-                System.out.println("❌ Tahle planeta neexistuje, zkus to znovu:");
-                continue;
-            }
+                temp = sc.nextInt();
 
-            if (temp == 8 && World.getKillCount() < 6) {
-                sc.close();
-                return "🚀 Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
-            }
+                if (temp < 1 || temp > 8) {
+                    System.out.println("❌ Tahle planeta neexistuje, zkus to znovu:");
+                    continue;
+                }
 
-            if (temp == 5 && !World.getOxygen()) {
-                sc.close();
-                return "🔴 Potřebuješ kyslíkovou nádrž, abys přežil na Titanu!";
-            }
+                if (temp == 8 && World.getKillCount() <= 5) {
+                    return "🚀 Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
+                }
 
-            if (temp == 6 && !World.getUnderWaterSuit()) {
-                sc.close();
-                return "🌊 Potřebuješ podvodní oblek, abys mohl přistát na Neptunu!";
-            }
+                if (temp == 5 && !World.getOxygen()) {
+                    return "🔴 Potřebuješ kyslíkovou nádrž, abys přežil na Titanu!";
+                }
 
-            if (World.moveTo(temp)) {
-                World.setCurrentLocation(temp);
-                sc.close();
-                return "✅ Přistál jsi na planetě " + World.getMap().get(temp).getName() + "!";
-            } else {
-                System.out.println("🚫 Na tuto planetu nelze přistát. Zkus jinou:");
+                if (temp == 6 && !World.getUnderWaterSuit()) {
+                    return "🌊 Potřebuješ podvodní oblek, abys mohl přistát na Neptunu!";
+                }
+
+                if (World.moveTo(temp)) {
+                    World.setCurrentLocation(temp);
+                    return "✅ Přistál jsi na planetě " + World.getMap().get(temp).getName() + "!";
+                } else {
+                    System.out.println("🚫 Na tuto planetu nelze přistát. Zkus jinou:");
+                }
+            }catch (InputMismatchException e) {
+                System.out.println("❌ Neplatný vstup! Zadej číslo planety:");
+                sc.nextLine();
             }
         }
     }

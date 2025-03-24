@@ -18,7 +18,8 @@ public class ShowStats extends Command {
         System.out.println(inv.printInventory());
 
         return "❤️ Zdraví: " + player.getHealth() + "\n" +
-                "⚔️ Poškození: " + player.getDamage() + "\n";
+                "⚔️ Poškození: " + (player.getDamage() + player.damageIncrease(inv)) + "\n" +
+                "💰 Mince: " + inv.getCoins() + "\n";
 
     }
 

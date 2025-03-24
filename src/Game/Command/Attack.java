@@ -25,22 +25,17 @@ public class Attack extends Command {
         Enemy en = world.returnenemyInLocation();
         if (en == null) {
             return "❌ Žádný nepřítel v této lokaci.";
+        } else {
+            System.out.println("✅ Nepřítel nalezen v této lokaci!");
         }
 
         int damageIncrease = 0;
 
 
-        for (Item item : inventory.getInventory()) {
-            if (item instanceof Weapon) {
-                Weapon weapon = (Weapon) item;
-                damageIncrease += weapon.getDamageIncrease();
-            }
-        }
-
 
         while (en.getHealth() > 0 && player.getHealth() > 0) {
 
-            en.takeDamage(player.giveDamage(damageIncrease));
+            en.takeDamage(player.giveDamage(player.damageIncrease(inventory)));
 
             if (en.getHealth() <= 0) {
                 world.removeEnemyFromLocation(en);
