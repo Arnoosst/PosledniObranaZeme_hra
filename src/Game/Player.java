@@ -30,9 +30,8 @@ public class Player {
         return health;
     }
 
-    public  int giveDamage(int damageIncrease) {
-        damage = damage + damageIncrease;
-        return damage;
+    public int giveDamage(int damageIncrease) {
+        return damage + damageIncrease;
     }
 
     public  int getHealth() {

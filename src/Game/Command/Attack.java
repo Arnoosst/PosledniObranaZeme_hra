@@ -26,11 +26,9 @@ public class Attack extends Command {
         if (en == null) {
             return "❌ Žádný nepřítel v této lokaci.";
         } else {
-            System.out.println("✅ Nepřítel nalezen v této lokaci!");
+            System.out.println("✅ Nepřítel nalezen v této lokaci! \n");
+            System.out.println(en.getName() +": " + en.getSpeach());
         }
-
-        int damageIncrease = 0;
-
 
 
         while (en.getHealth() > 0 && player.getHealth() > 0) {
