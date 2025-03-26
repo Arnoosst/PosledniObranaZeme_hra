@@ -23,7 +23,7 @@ public class TakeItem extends Command{
         for (int i = 0; i < world.getWeapons().size(); i++) {
             if (World.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
                 inventory.addItem(world.getWeapons().get(i));
-                result.append("🔫 Našel jsi zbraň: ").append(world.getWeapons().get(i).getItemName()).append("!\n");
+                result.append("Našel jsi zbraň: ").append(world.getWeapons().get(i).getItemName()).append("!\n");
                 world.getWeapons().remove(i);
             }
         }
@@ -31,7 +31,7 @@ public class TakeItem extends Command{
         for (int i = 0; i < world.getMedkits().size(); i++) {
             if (World.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
                 inventory.addItem(world.getMedkits().get(i));
-                result.append("🩹 Vzal jsi si medkit!\n");
+                result.append("Vzal jsi si medkit!\n");
                 world.getMedkits().remove(i);
             }
         }

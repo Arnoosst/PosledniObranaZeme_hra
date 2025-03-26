@@ -1,3 +1,9 @@
-14;20;Medkit;100
-15;40;Medkit;150
-16;60;Medkit;225
+14;20;Medkit;300
+15;20;Medkit;300
+16;20;Medkit;300
+17;40;Medkit;400
+18;40;Medkit;400
+19;40;Medkit;400
+20;60;Medkit;600
+21;60;Medkit;600
+22;60;Medkit;600

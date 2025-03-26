@@ -60,7 +60,7 @@ public class MerchantCommand extends Command {
                                         break;
                                     }
                                 }catch (InputMismatchException e) {
-                                    System.out.println("⚠️ Neplatný vstup! Napiš číslo.");
+                                    System.out.println("Neplatný vstup! Napiš číslo.");
                                     sc.nextLine();
                                 }
                             }
@@ -88,7 +88,7 @@ public class MerchantCommand extends Command {
                                         break;
                                     }
                                 }catch (InputMismatchException e) {
-                                    System.out.println("⚠️ Neplatný vstup! Napiš číslo.");
+                                    System.out.println("Neplatný vstup! Napiš číslo.");
                                     sc.nextLine();
                                 }
                             }
@@ -102,7 +102,7 @@ public class MerchantCommand extends Command {
                             break;
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println("⚠️ Neplatný vstup! Napiš číslo.");
+                    System.out.println("Neplatný vstup! Napiš číslo.");
                     sc.nextLine();
                 }
             }

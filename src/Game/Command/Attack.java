@@ -24,9 +24,9 @@ public class Attack extends Command {
     public String execute() {
         Enemy en = world.returnenemyInLocation();
         if (en == null) {
-            return "❌ Žádný nepřítel v této lokaci.";
+            return "Žádný nepřítel v této lokaci.";
         } else {
-            System.out.println("✅ Nepřítel nalezen v této lokaci! \n");
+            System.out.println("Nepřítel nalezen v této lokaci! \n");
             System.out.println(en.getName() +": " + en.getSpeach());
         }
 
@@ -49,13 +49,13 @@ public class Attack extends Command {
                 if (World.getCurrentLocation() == 5) {
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Boss padl k zemi... ale co to má u sebe?");
-                    System.out.println("🌊 Získal jsi UNDERWATER SUIT! 🌊");
+                    System.out.println("Získal jsi UNDERWATER SUIT!");
                     World.setUnderWaterSuit(true);
                 }
 
 
                 inventory.setCoins(inventory.getCoins() + 100 * en.getId());
-                return "✅ Nepřítel poražen. Získáváš respekt vesmíru!";
+                return "Nepřítel poražen. Získáváš respekt vesmíru!";
             }
 
 
@@ -65,11 +65,12 @@ public class Attack extends Command {
             // nevim jak ukoncit hru, zeptam se na hodine
             if (player.getHealth() <= 0) {
                 System.out.println("💀 Hráč poražen!");
-                return exit.execute();
+                System.exit(0);
+                return "";
             }
         }
 
-        return "Chyba v boji!";
+        return "Chyba v boji";
     }
 
     @Override

@@ -1,0 +1,20 @@
+Nápověda:
+    Tvým úkolem je chránit Zemi před mimozemskou invazí!
+
+    Prozkoumávej planety, bojuj s nepřáteli a vylepšuj své vybavení.
+
+    Používej strategii, abys přežil a zvítězil!
+
+   DOSTUPNÉ PŘÍKAZY:
+
+🔹 jdi [lokace] - Přesun do jiné lokace (pouze mezi Zemí a jinou planetou)
+🔹 prohledat [místnost] - Prohledání místnosti
+🔹 mluvit [postava] - Konverzace s postavou
+🔹 vzit [předmět] - Vezme předmět do inventáře
+🔹 vyhodit [předmět] - Zahodí předmět z inventáře
+🔹 zautocit [nepřítel] - Zaútočí na nepřítele
+🔹 medkit - Použije medkit pro léčení
+🔹 staty - Zobrazí statistiky hráče a inventáře
+🔹 obchod - Otevře obchod (Dostupné pouze na Zemi)
+🔹 konec - Ukončí hru
+🔹 pomoc - Zobrazí tuto nápovědu

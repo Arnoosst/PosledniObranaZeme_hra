@@ -1,23 +1,19 @@
 package Game.Command;
 
+import Game.MainMenu;
+
 public class Help extends Command{
 
-    public Help() {
+    private MainMenu mainMenu;
+
+    public Help(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
     }
 
     @Override
     public String execute() {
-        return  "🔧 Dostupné příkazy: " +
-                "\n 🚶‍♂️ jdi [lokace] - Přesun do jiné lokace" +
-                "\n 🕵️‍♂️ prohledat [místnost] - Prohledání místnosti" +
-                "\n 🗣️ mluvit [postava] - Konverzace s postavou" +
-                "\n 🎒 vezmi [předmět] - Vezme předmět do inventáře" +
-                "\n 🗑️ vyhodit [předmět] - Zahodí předmět z inventáře" +
-                "\n ⚔️ zautocit [nepřítel] - Zaútočí na nepřítele" +
-                "\n 💉 medkit - Použije medkit pro léčení" +
-                "\n 📊 staty - Zobrazí statistiky hráče a inventáře" +
-                "\n ❌ konec - Ukončí hru" +
-                "\n ❓ pomoc - Zobrazí tuto nápovědu";
+        mainMenu.loadHelp();
+        return "";
     }
 
     @Override

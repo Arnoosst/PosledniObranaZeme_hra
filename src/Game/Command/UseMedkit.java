@@ -25,10 +25,10 @@ public class UseMedkit extends Command {
                 Medkit medkit = (Medkit) item;
                 player.setHealth(player.getHealth() + medkit.getHealthIncrease());
                 inventory.getInventory().remove(i);
-                return "💊 Použil jsi medkit! 🏥 Zdraví obnoveno o " + medkit.getHealthIncrease() + " HP.";
+                return "Použil jsi medkit! Zdraví obnoveno o " + medkit.getHealthIncrease() + " HP.";
             }
         }
-        return "❌ Žádný medkit v inventáři! Najdi nebo kup nový.";
+        return "Žádný medkit v inventáři! Najdi nebo kup nový.";
     }
 
     @Override

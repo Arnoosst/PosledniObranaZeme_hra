@@ -17,6 +17,7 @@ public class Console {
     private Inventory inventory;
     private Player player;
     private Merchant merchant;
+    private MainMenu mainMenu = new MainMenu();
 
 
     public Console() {
@@ -35,7 +36,7 @@ public class Console {
         commands.put("mluvit", new IteractWithEntity(world));
         commands.put("vzit", new TakeItem(world, inventory));
         commands.put("vyhodit", new ThrowOutItem(inventory, world));
-        commands.put("pomoc", new Help());
+        commands.put("pomoc", new Help(mainMenu));
         commands.put("medkit", new UseMedkit(inventory, player));
         commands.put("konec", new Exit());
         commands.put("zautocit", new Attack(world, player, inventory));
@@ -46,7 +47,7 @@ public class Console {
 
     public void executeCommand() {
         System.out.println(">>");
-        String command = scanner.next();
+        String command = scanner.nextLine();
         if (commands.containsKey(command)) {
             System.out.println(commands.get(command).execute());
             exit = commands.get(command).exit();
@@ -57,7 +58,7 @@ public class Console {
 
 
     public void start() {
-        MainMenu.mainMenu();
+        mainMenu.mainMenu();
         initialization();
         do {
             executeCommand();

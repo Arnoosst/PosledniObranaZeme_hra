@@ -1,17 +1,13 @@
 package Game.Command;
 
-public class Exit extends Command{
-
-    public Exit() {
-    }
-
+public class UnlockCrate extends Command{
     @Override
     public String execute() {
-        return "Hra byla ukončena.";
+        return "";
     }
 
     @Override
     public boolean exit() {
-        return true;
+        return false;
     }
 }

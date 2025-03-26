@@ -15,11 +15,13 @@ import java.util.HashSet;
 public class Merchant {
 
     private int coins;
+    private int keyToSell;
     private ArrayList<Item> sortiment;
 
 
     public Merchant() {
         this.coins = 400;
+        this.keyToSell = 2;
         sortiment = new ArrayList<>();
         loadWeapons();
         loadMedKits();
@@ -116,6 +118,14 @@ public class Merchant {
         return x;
     }
 
+
+    public int getKeyToSell() {
+        return keyToSell;
+    }
+
+    public void setKeyToSell(int keyToSell) {
+        this.keyToSell = keyToSell;
+    }
 
     public int getCoins() {
         return coins;

@@ -6,6 +6,7 @@ public class Inventory {
 
     private  ArrayList<Item> inventory = new ArrayList<>();
     private int coins;
+    private int keys;
 
 
     public Inventory() {
@@ -59,9 +60,13 @@ public class Inventory {
     }
 
 
+    public int getKeys() {
+        return keys;
+    }
 
-
-
+    public void setKeys(int keys) {
+        this.keys = keys;
+    }
 
     public  ArrayList<Item> getInventory() {
         return inventory;

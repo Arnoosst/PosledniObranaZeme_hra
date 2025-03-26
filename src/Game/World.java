@@ -1,9 +1,6 @@
 package Game;
 
-import Game.Items.Inventory;
-import Game.Items.Item;
-import Game.Items.Medkit;
-import Game.Items.Weapon;
+import Game.Items.*;
 import Game.NPC.Enemy;
 import Game.NPC.Entity;
 import Game.NPC.FriendlyFoe;
@@ -22,6 +19,7 @@ public class  World {
     private  ArrayList<Entity> npc = new ArrayList<>();
     private  ArrayList<Item> weapons = new ArrayList<>();
     private  ArrayList<Item> medkits = new ArrayList<>();
+    private  ArrayList<Item> crates = new ArrayList<>();
     private static int currentLocation = 1;
     private static int killCount = 0;
     private static Boolean oxygen = false;
@@ -135,6 +133,24 @@ public class  World {
 
     }
 
+    public  void loadCrates() {
+        try (BufferedReader br = new BufferedReader(new FileReader("crates.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
+                int id = Integer.parseInt(parts[0]);
+                String name = parts[2];
+                int price = Integer.parseInt(parts[3]);
+                crates.add(new Crates(name, id, price));
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 
     public static boolean moveTo(int location) {
@@ -174,8 +190,9 @@ public class  World {
     }
 
 
-
-
+    public ArrayList<Item> getCrates() {
+        return crates;
+    }
 
     public static int getCurrentLocation() {
         return currentLocation;

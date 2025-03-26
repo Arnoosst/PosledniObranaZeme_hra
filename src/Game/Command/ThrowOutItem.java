@@ -21,15 +21,15 @@ public class ThrowOutItem extends Command{
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("🗑️ Jaký předmět chceš vyhodit z inventáře?");
-        System.out.println("📜 Tvůj aktuální inventář:");
+        System.out.println("Jaký předmět chceš vyhodit z inventáře?");
+        System.out.println("Tvůj aktuální inventář:");
 
         // Výpis inventáře
         for (Item item : inventory.getInventory()) {
             System.out.println("➡️ " + item.getItemID() + ": " + item.getItemName());
         }
 
-        System.out.print("✏️ Zadej ID předmětu: \n>> \n");
+        System.out.print("Zadej ID předmětu: \n>> \n");
 
 
         int id;
@@ -37,7 +37,7 @@ public class ThrowOutItem extends Command{
             id = sc.nextInt();
         } catch (InputMismatchException e) {
             sc.nextLine();
-            return "❌ Neplatný vstup! Zadej číslo.";
+            return "Neplatný vstup! Zadej číslo.";
         }
 
         Item itemToRemove = null;
@@ -49,7 +49,7 @@ public class ThrowOutItem extends Command{
         }
 
         if (itemToRemove == null) {
-            return "❌ Špatné ID, žádný takový předmět v inventáři není!";
+            return "Špatné ID, žádný takový předmět v inventáři není!";
         }
 
         if (itemToRemove instanceof Medkit) {
@@ -62,7 +62,7 @@ public class ThrowOutItem extends Command{
 
         inventory.removeItem(itemToRemove);
 
-        return "✅ Předmět " + itemToRemove.getItemName() + " (ID: " + id + ") byl odstraněn z inventáře.";
+        return "Předmět " + itemToRemove.getItemName() + " (ID: " + id + ") byl odstraněn z inventáře.";
     }
 
 
