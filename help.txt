@@ -1,20 +1,29 @@
-Nápověda:
-    Tvým úkolem je chránit Zemi před mimozemskou invazí!
+📜 Nápověda:
+Tvým úkolem je bránit Zemi před mimozemskou invazí!
 
-    Prozkoumávej planety, bojuj s nepřáteli a vylepšuj své vybavení.
+🔹 Prozkoumávej planety, bojuj s nepřáteli a vylepšuj své vybavení.
+🔹 Používej strategii – správná rozhodnutí ti zajistí přežití.
+🔹 Každý nepřítel ti může shodit užitečné předměty nebo coiny, které využiješ u obchodníka.
 
-    Používej strategii, abys přežil a zvítězil!
+🌍 HERNÍ MECHANIKY:
 
-   DOSTUPNÉ PŘÍKAZY:
+🔹Začínáš na Zemi – zde najdeš obchodníka a základní vybavení.
+🔹Můžeš cestovat mezi Zemí a jinými planetami, ale některé mají specifické podmínky:
+    🔹Nepron → potřebuješ [speciální vybavení].
+    🔹Titan → potřebuješ [odolnější oblek].
+🔹Každá planeta má svého vůdce – musíš zabít všechny vůdce, než se dostaneš k hlavnímu bossovi.
+🔹Inventář je omezený na 5 míst → pečlivě vybírej, co si vezmeš.
+🔹Prozkoumávej prostředí! Můžeš najít zbraně, zbroj nebo jiné užitečné předměty.
 
-🔹 jdi [lokace] - Přesun do jiné lokace (pouze mezi Zemí a jinou planetou)
-🔹 prohledat [místnost] - Prohledání místnosti
-🔹 mluvit [postava] - Konverzace s postavou
-🔹 vzit [předmět] - Vezme předmět do inventáře
-🔹 vyhodit [předmět] - Zahodí předmět z inventáře
-🔹 zautocit [nepřítel] - Zaútočí na nepřítele
-🔹 medkit - Použije medkit pro léčení
-🔹 staty - Zobrazí statistiky hráče a inventáře
-🔹 obchod - Otevře obchod (Dostupné pouze na Zemi)
-🔹 konec - Ukončí hru
-🔹 pomoc - Zobrazí tuto nápovědu
+📌 DOSTUPNÉ PŘÍKAZY:
+🔹 jdi [lokace] – Přesun mezi Zemí a jinou planetou
+🔹 prohledat [místnost] – Prozkoumání prostředí
+🔹 mluvit [postava] – Konverzace s NPC
+🔹 vzit [předmět] – Seber předmět do inventáře
+🔹 vyhodit [předmět] – Zahodí předmět z inventáře
+🔹 zautocit [nepřítel] – Útok na nepřítele
+🔹 medkit – Použití medkitu pro léčení
+🔹 staty – Zobrazení statistik hráče a inventáře
+🔹 obchod – Otevře obchod (pouze na Zemi)
+🔹 konec – Ukončení hry
+🔹 pomoc – Zobrazení této nápovědy

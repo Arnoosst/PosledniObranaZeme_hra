@@ -242,4 +242,36 @@ public class  World {
     public static void setUnderWaterSuit(Boolean underWaterSuit) {
         World.underWaterSuit = underWaterSuit;
     }
+
+    public static void setMap(HashMap<Integer, Location> map) {
+        World.map = map;
+    }
+
+    public ArrayList<Entity> getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(ArrayList<Entity> enemy) {
+        this.enemy = enemy;
+    }
+
+    public void setNpc(ArrayList<Entity> npc) {
+        this.npc = npc;
+    }
+
+    public void setWeapons(ArrayList<Item> weapons) {
+        this.weapons = weapons;
+    }
+
+    public void setMedkits(ArrayList<Item> medkits) {
+        this.medkits = medkits;
+    }
+
+    public void setCrates(ArrayList<Item> crates) {
+        this.crates = crates;
+    }
+
+    public static void setKillCount(int killCount) {
+        World.killCount = killCount;
+    }
 }

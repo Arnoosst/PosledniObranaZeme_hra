@@ -1,18 +1,18 @@
 package Game.Command;
 
-import Game.MainMenu;
+import Game.GamePrints;
 
 public class Help extends Command{
 
-    private MainMenu mainMenu;
+    private GamePrints gamePrints;
 
-    public Help(MainMenu mainMenu) {
-        this.mainMenu = mainMenu;
+    public Help(GamePrints gamePrints) {
+        this.gamePrints = gamePrints;
     }
 
     @Override
     public String execute() {
-        mainMenu.loadHelp();
+        gamePrints.loadHelp();
         return "";
     }
 

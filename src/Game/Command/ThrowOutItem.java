@@ -24,21 +24,23 @@ public class ThrowOutItem extends Command{
         System.out.println("Jaký předmět chceš vyhodit z inventáře?");
         System.out.println("Tvůj aktuální inventář:");
 
-        // Výpis inventáře
-        for (Item item : inventory.getInventory()) {
-            System.out.println("➡️ " + item.getItemID() + ": " + item.getItemName());
-        }
+
+        inventory.printInventory();
 
         System.out.print("Zadej ID předmětu: \n>> \n");
 
-
         int id;
-        try {
-            id = sc.nextInt();
-        } catch (InputMismatchException e) {
-            sc.nextLine();
-            return "Neplatný vstup! Zadej číslo.";
+
+        while (true) {
+            try {
+                id = sc.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Neplatný vstup, zadej číslo!");
+                sc.nextLine();
+            }
         }
+
 
         Item itemToRemove = null;
         for (Item item : inventory.getInventory()) {

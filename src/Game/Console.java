@@ -2,7 +2,6 @@ package Game;
 
 import Game.Command.*;
 import Game.Items.Inventory;
-import Game.Items.Item;
 import Game.NPC.Merchant;
 
 import java.util.HashMap;
@@ -17,7 +16,7 @@ public class Console {
     private Inventory inventory;
     private Player player;
     private Merchant merchant;
-    private MainMenu mainMenu = new MainMenu();
+    private GamePrints gamePrints = new GamePrints();
 
 
     public Console() {
@@ -36,10 +35,10 @@ public class Console {
         commands.put("mluvit", new IteractWithEntity(world));
         commands.put("vzit", new TakeItem(world, inventory));
         commands.put("vyhodit", new ThrowOutItem(inventory, world));
-        commands.put("pomoc", new Help(mainMenu));
+        commands.put("pomoc", new Help(gamePrints));
         commands.put("medkit", new UseMedkit(inventory, player));
         commands.put("konec", new Exit());
-        commands.put("zautocit", new Attack(world, player, inventory));
+        commands.put("zautocit", new Attack(world, player, inventory, gamePrints));
         commands.put("staty", new ShowStats(inventory, player));
         commands.put("obchod", new MerchantCommand(world, merchant, inventory));
 
@@ -58,7 +57,7 @@ public class Console {
 
 
     public void start() {
-        mainMenu.mainMenu();
+        gamePrints.mainMenu();
         initialization();
         do {
             executeCommand();

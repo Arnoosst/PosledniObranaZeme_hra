@@ -1,16 +1,14 @@
 package Game;
 
-import Game.NPC.FriendlyFoe;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainMenu {
+public class GamePrints {
 
-    public MainMenu() {
+    public GamePrints() {
     }
 
     public  void loadHelp() {
@@ -59,6 +57,38 @@ public class MainMenu {
         }
 
     }
+
+    public  void loadWon() {
+        try (BufferedReader br = new BufferedReader(new FileReader("wonGame.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                delay(1000);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public  void loadLoseGame() {
+        try (BufferedReader br = new BufferedReader(new FileReader("loseGame.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                delay(1000);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 
 
 

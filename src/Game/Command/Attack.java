@@ -1,5 +1,6 @@
 package Game.Command;
 
+import Game.GamePrints;
 import Game.Items.Inventory;
 import Game.Items.Item;
 import Game.Items.Weapon;
@@ -12,12 +13,13 @@ public class Attack extends Command {
     private World world;
     private Player player;
     private Inventory inventory;
-    private Exit exit;
+    private GamePrints gamePrints;
 
-    public Attack(World world, Player player, Inventory inventory) {
+    public Attack(World world, Player player, Inventory inventory, GamePrints gamePrints) {
         this.world = world;
         this.player = player;
         this.inventory = inventory;
+        this.gamePrints = gamePrints;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class Attack extends Command {
                 if (World.getCurrentLocation() == 4) {
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
-                    System.out.println("🫧 Získal jsi OXYGEN TANK! 🫧");
+                    System.out.println("Získal jsi OXYGEN TANK!");
                     World.setOxygen(true);
                 }
 
@@ -51,6 +53,10 @@ public class Attack extends Command {
                     System.out.println("Boss padl k zemi... ale co to má u sebe?");
                     System.out.println("Získal jsi UNDERWATER SUIT!");
                     World.setUnderWaterSuit(true);
+                }
+                if (World.getCurrentLocation() == 8) {
+                    gamePrints.loadWon();
+                    System.exit(0);
                 }
 
 
@@ -62,11 +68,10 @@ public class Attack extends Command {
             player.takeDamage(en.getDamage());
 
 
-            // nevim jak ukoncit hru, zeptam se na hodine
             if (player.getHealth() <= 0) {
-                System.out.println("💀 Hráč poražen!");
+                System.out.println("💀 Hráč poražen!\n");
+                gamePrints.loadLoseGame();
                 System.exit(0);
-                return "";
             }
         }
 
