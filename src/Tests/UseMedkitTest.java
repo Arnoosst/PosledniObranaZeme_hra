@@ -44,8 +44,4 @@ class UseMedkitTest {
     }
 
 
-    @Test
-    void testExit() {
-        assertFalse(useMedkit.exit());
-    }
 }

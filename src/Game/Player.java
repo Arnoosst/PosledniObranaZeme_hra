@@ -13,7 +13,7 @@ public class Player {
         this.damage = 15;
     }
 
-    // instanceof jsem si nechal poradit od chatgpt
+
     public int damageIncrease(Inventory inventory) {
         int damageIncrease = 0;
         for (Item item : inventory.getInventory()) {
@@ -46,4 +46,7 @@ public class Player {
         return damage;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 }

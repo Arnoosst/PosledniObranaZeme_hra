@@ -9,17 +9,19 @@ import java.util.Scanner;
 
 public class Move extends Command {
 
-    public Move() {}
+    private Scanner sc;
+
+    public Move(Scanner scanner) {
+        this.sc = scanner;
+    }
 
 
 
     @Override
     public String execute() {
-        Scanner sc = new Scanner(System.in);
-        int temp;
 
+        int temp;
         System.out.println("🌍 Kam chceš letět? Zadej číslo planety:");
-        String x;
         for (Location location : World.getMap().values()) {
             System.out.println(location);
         }
@@ -35,8 +37,12 @@ public class Move extends Command {
                     continue;
                 }
 
-                if (temp == 8 && World.getKillCount() <= 5) {
-                    return "Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
+                if (temp == 8) {
+                    if (World.getKillCount() <= 5) {
+                        return "Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
+                    } else if (World.getKillCount() == 6) {
+                        return "Přistál jsi na lodi Archona Xar'quna.";
+                    }
                 }
 
                 if (temp == 5 && !World.getOxygen()) {

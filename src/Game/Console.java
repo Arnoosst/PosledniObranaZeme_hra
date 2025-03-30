@@ -30,11 +30,11 @@ public class Console {
         player = new Player();
         merchant = new Merchant();
         scanner = new Scanner(System.in);
-        commands.put("jdi", new Move());
+        commands.put("jdi", new Move(scanner));
         commands.put("prohledat", new Search(world));
         commands.put("mluvit", new IteractWithEntity(world));
         commands.put("vzit", new TakeItem(world, inventory));
-        commands.put("vyhodit", new ThrowOutItem(inventory, world));
+        commands.put("vyhodit", new ThrowOutItem(inventory, world, scanner));
         commands.put("pomoc", new Help(gamePrints));
         commands.put("medkit", new UseMedkit(inventory, player));
         commands.put("konec", new Exit());

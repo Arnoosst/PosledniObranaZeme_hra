@@ -12,15 +12,16 @@ public class ThrowOutItem extends Command{
 
     private Inventory inventory;
     private World world;
+    private Scanner sc;
 
-    public ThrowOutItem(Inventory inventory, World world) {
+    public ThrowOutItem(Inventory inventory, World world, Scanner scanner) {
         this.inventory = inventory;
         this.world = world;
+        this.sc = scanner;
     }
 
     @Override
     public String execute() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Jaký předmět chceš vyhodit z inventáře?");
         System.out.println("Tvůj aktuální inventář:");
 
