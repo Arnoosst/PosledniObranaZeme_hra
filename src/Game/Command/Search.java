@@ -13,7 +13,7 @@ public class Search extends Command {
         this.world = world;
     }
 
-
+    //StringBuilder jsem si nechal poradit a vystvetlit od chatgpt
     @Override
     public String execute() {
         StringBuilder result = new StringBuilder();

@@ -52,6 +52,6 @@ public class TakeItemTest {
     void testNoItemsFound() {
         String result = takeItem.execute();
 
-        assertEquals("Nic tu není!", result);
+        assertEquals("🔍 Nic tu není!", result);
     }
 }

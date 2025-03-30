@@ -274,4 +274,15 @@ public class  World {
     public static void setKillCount(int killCount) {
         World.killCount = killCount;
     }
+
+    @Override
+    public String toString() {
+        return "World{" +
+                "enemy=" + enemy +
+                ", npc=" + npc +
+                ", weapons=" + weapons +
+                ", medkits=" + medkits +
+                ", crates=" + crates +
+                '}';
+    }
 }

@@ -42,17 +42,19 @@ public class Attack extends Command {
 
 
                 if (World.getCurrentLocation() == 4) {
+                    World.setOxygen(true);
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
-                    System.out.println("Získal jsi OXYGEN TANK!");
-                    World.setOxygen(true);
+                    return "Získal jsi OXYGEN TANK!";
+
                 }
 
                 if (World.getCurrentLocation() == 5) {
+                    World.setUnderWaterSuit(true);
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Boss padl k zemi... ale co to má u sebe?");
-                    System.out.println("Získal jsi UNDERWATER SUIT!");
-                    World.setUnderWaterSuit(true);
+                    return "Získal jsi UNDERWATER SUIT!";
+
                 }
                 if (World.getCurrentLocation() == 8) {
                     gamePrints.loadWon();
@@ -69,9 +71,9 @@ public class Attack extends Command {
 
 
             if (player.getHealth() <= 0) {
-                System.out.println("💀 Hráč poražen!\n");
-                gamePrints.loadLoseGame();
-                System.exit(0);
+                return "💀 Hráč poražen!";
+                //gamePrints.loadLoseGame();
+                //System.exit(0);
             }
         }
 

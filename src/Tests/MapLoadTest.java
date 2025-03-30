@@ -30,7 +30,7 @@ public class MapLoadTest {
         assertNotNull(World.getMap());
 
         Location location = World.getMap().get(1);
-        assertNotNull(location, "Lokace s ID 1 existuje");
+        assertNotNull(location, "Lokace s id 1 existuje");
         assertEquals("Zeme", location.getName(), "ma to byt zeme");
     }
 
@@ -51,7 +51,7 @@ public class MapLoadTest {
 
         Medkit medkit = (Medkit) world.getMedkits().get(0);
         assertNotNull(medkit, "První medkit ma existovat.");
-        assertEquals("Medkit", medkit.getItemName(), "Název prvního medkitu by měl být 'Medkit'.");
+        assertEquals("Medkit", medkit.getItemName(), "Název prvního medkitu by měl být Medkit.");
     }
 
     @Test
