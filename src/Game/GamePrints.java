@@ -42,7 +42,7 @@ public class GamePrints {
         String x;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Pro pokracovani v monologu kliknete enter \n");
+        System.out.println("\nPro pokracovani v dialogu kliknete enter \n");
 
         try (BufferedReader br = new BufferedReader(new FileReader("doctorHayes.txt"))) {
             String line;

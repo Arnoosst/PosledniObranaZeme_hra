@@ -29,7 +29,7 @@ public class Attack extends Command {
             return "Žádný nepřítel v této lokaci.";
         } else {
             System.out.println("Nepřítel nalezen v této lokaci! \n");
-            System.out.println(en.getName() +": " + en.getSpeach());
+            System.out.println(en.getName() +": " + en.getSpeach() + "\n");
         }
 
 
