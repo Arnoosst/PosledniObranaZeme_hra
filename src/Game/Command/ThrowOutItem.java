@@ -8,6 +8,10 @@ import Game.World;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/**
+ * Represents a command to throw out an item from the inventory.
+ */
 public class ThrowOutItem extends Command{
 
     private Inventory inventory;
@@ -20,6 +24,15 @@ public class ThrowOutItem extends Command{
         this.sc = scanner;
     }
 
+
+    /**
+     * Executes the command to throw out an item from the inventory.
+     * The user is asked to choose an item by its ID, and the item is then removed from the inventory
+     * and placed in the world at the current location. (Medkits are placed in the medkits list)
+     *
+     * @return a message containing the result of the command, confirming the removal
+     *         or saying that the item could not be found.
+     */
     @Override
     public String execute() {
         System.out.println("Jaký předmět chceš vyhodit z inventáře?");

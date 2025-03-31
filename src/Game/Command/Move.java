@@ -7,6 +7,10 @@ import Game.World;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/**
+ * Represents a command that allows the player to move to a different planet in the game.
+ */
 public class Move extends Command {
 
     private Scanner sc;
@@ -17,6 +21,16 @@ public class Move extends Command {
 
 
 
+
+    /**
+     * Executes the command to move the player to a different planet.
+     * The method displays the available planets, checks the player's input,
+     * and check if the player have the conditions for each planet (oxygen tank, underwater suit, defeated bosses).
+     * If the player selects a valid planet and have the requirements, they are moved there.
+     * Otherwise, an error message is returned.
+     *
+     * @return a message containing the result of the attempted move
+     */
     @Override
     public String execute() {
 

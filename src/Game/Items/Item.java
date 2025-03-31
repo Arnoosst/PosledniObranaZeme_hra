@@ -1,5 +1,10 @@
 package Game.Items;
 
+
+/**
+ * Represents item with a name, id and price.
+ * This class is a base for other types of items.
+ */
 public class Item {
     private String itemName;
     private int itemID;
@@ -22,19 +27,6 @@ public class Item {
 
     public int getItemID() {
         return itemID;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Item item = (Item) obj;
-        return itemID == item.itemID;
-    }
-
-    @Override
-    public int hashCode() {
-        return Integer.hashCode(itemID);
     }
 
     public void setItemID(int itemID) {

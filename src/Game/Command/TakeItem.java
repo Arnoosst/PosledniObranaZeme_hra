@@ -7,6 +7,10 @@ import Game.World;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Represents a command to take items from the world and add them to the player's inventory.
+ */
 public class TakeItem extends Command{
     private World world;
     private Inventory inventory;
@@ -16,6 +20,16 @@ public class TakeItem extends Command{
         this.inventory = inventory;
     }
 
+
+
+    /**
+     * Executes the command to take items from the current location in the world.
+     * The method checks for weapons and medkits in the world at the current location and adds them to the inventory.
+     * If any items are found, a message is returned indicating what the player found and took.
+     * If no items are found, a message indicating that nothing is available is returned.
+     *
+     * @return a message containing the result of the operation
+     */
     @Override
     public String execute() {
         String result = "";

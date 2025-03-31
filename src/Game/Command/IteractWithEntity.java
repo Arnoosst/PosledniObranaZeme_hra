@@ -2,6 +2,11 @@ package Game.Command;
 
 import Game.World;
 
+
+/**
+ * Represents a command that allows the player to interact with an NPC in the game.
+ * If there is an NPC at the current location of the player, the player can interact with them.
+ */
 public class IteractWithEntity extends Command{
 
      private World world;
@@ -11,7 +16,14 @@ public class IteractWithEntity extends Command{
         this.world = world;
     }
 
-
+    /**
+     * Executes the interaction with an NPC.
+     * The method checks if there is an NPC at the current location of the player.
+     * If there is, the player's interaction with the NPC is initiated, and the NPC's name and speech are displayed.
+     * If no NPC is found, the player is informed that they must try a different location.
+     *
+     * @return a string that contains the outcome of the interaction
+     */
     @Override
     public String execute() {
         for (int i = 0; i < world.getNpc().size(); i++) {

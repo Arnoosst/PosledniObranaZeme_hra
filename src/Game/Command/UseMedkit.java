@@ -6,6 +6,9 @@ import Game.Items.Medkit;
 import Game.Player;
 import Game.World;
 
+/**
+ * Represents a command to use a medkit from the inventory.
+ */
 public class UseMedkit extends Command {
 
     private Inventory inventory;
@@ -16,6 +19,14 @@ public class UseMedkit extends Command {
         this.player = player;
     }
 
+
+    /**
+     * Executes the command to use a medkit from the inventory.
+     * If a medkit is found, it restores health to the player and removes the medkit from the inventory.
+     * If no medkit is found, a message is returned saying that the player needs to find or buy a new medkit.
+     *
+     * @return a message containing the result of using the medkit, either health restored or no medkit found.
+     */
     @Override
     public String execute() {
         for (int i = 0; i < inventory.getInventory().size(); i++) {

@@ -5,6 +5,10 @@ import Game.Items.Medkit;
 import Game.NPC.Entity;
 import Game.World;
 
+
+/**
+ * Represents a command to search the current location for items (medkits, weapons) and NPCs (survivors).
+ */
 public class Search extends Command {
 
     private World world;
@@ -13,6 +17,12 @@ public class Search extends Command {
         this.world = world;
     }
 
+
+    /**
+     * Executes the command to search the current location for medkits, weapons, and NPCs.
+     *
+     * @return a message indicating what was found at the current location
+     */
     @Override
     public String execute() {
         String result = "";

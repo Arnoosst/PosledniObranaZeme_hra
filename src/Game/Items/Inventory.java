@@ -2,6 +2,10 @@ package Game.Items;
 
 import java.util.ArrayList;
 
+/**
+ * Represents an inventory system that can have Item objects.
+ * The inventory has a limit of 5 items and tracks coins and keys.
+ */
 public class Inventory {
 
     private  ArrayList<Item> inventory = new ArrayList<>();
@@ -14,6 +18,15 @@ public class Inventory {
         this.coins = 500;
     }
 
+
+
+    /**
+     * Adds an Item to the inventory.
+     * If the item is null or the inventory is full, the item will not be added.
+     *
+     * @param item the item to be added to the inventory.
+     * @return true if the item was successfully added, false otherwise.
+     */
     public boolean addItem(Item item) {
         if (item == null) {
             return false;
@@ -26,6 +39,14 @@ public class Inventory {
         return true;
     }
 
+
+    /**
+     * Removes an Item from the inventory.
+     * If the item is null, nothing will be removed.
+     *
+     * @param item the item to be removed from the inventory.
+     * @return code true if the item was successfully removed, false otherwise.
+     */
     public  boolean removeItem(Item item){
         if(item == null){
             return false;
@@ -35,6 +56,13 @@ public class Inventory {
         }
     }
 
+
+    /**
+     * Locates an Item by its unique ID in the inventory.
+     *
+     * @param id the ID of the item to be located.
+     * @return the item with the specified ID, or null if no item with the given ID is found.
+     */
     public Item locateItemFromId(int id){
         for (Item item : inventory) {
             if (item.getItemID() == id) {
@@ -47,6 +75,12 @@ public class Inventory {
 
 
 
+    /**
+     * Returns a string representation of the inventory contents.
+     * The list includes each item’s name, ID, and price.
+     *
+     * @return a formatted string representing the inventory.
+     */
     public String printInventory() {
         String x;
         x = "🎒 Inventář: \n";

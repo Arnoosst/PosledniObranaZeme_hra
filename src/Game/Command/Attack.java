@@ -8,6 +8,11 @@ import Game.NPC.Enemy;
 import Game.Player;
 import Game.World;
 
+
+/**
+ * Represents the attack command in the game, where the player fights an enemy.
+ * The player deals damage to an enemy and the enemy fights back until player or enemy is defeated.
+ */
 public class Attack extends Command {
 
     private World world;
@@ -22,6 +27,13 @@ public class Attack extends Command {
         this.gamePrints = gamePrints;
     }
 
+    /**
+     * Executes the attack command where the player fights an enemy.
+     * The player and enemy take turns dealing damage to each other until one of them is defeated.
+     * If the player defeats an enemy, rewards are given based on the current location.
+     *
+     * @return a string message indicating the outcome of the battle.
+     */
     @Override
     public String execute() {
         Enemy en = world.returnenemyInLocation();
