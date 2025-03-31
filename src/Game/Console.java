@@ -40,7 +40,7 @@ public class Console {
         commands.put("konec", new Exit());
         commands.put("zautocit", new Attack(world, player, inventory, gamePrints));
         commands.put("staty", new ShowStats(inventory, player));
-        commands.put("obchod", new MerchantCommand(world, merchant, inventory));
+        commands.put("obchod", new MerchantCommand(world, merchant, inventory, scanner));
 
     }
 

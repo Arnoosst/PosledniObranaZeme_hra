@@ -18,12 +18,12 @@ public class TakeItem extends Command{
 
     @Override
     public String execute() {
-        StringBuilder result = new StringBuilder();
+        String result = "";
 
         for (int i = 0; i < world.getWeapons().size(); i++) {
             if (World.getCurrentLocation() == world.getWeapons().get(i).getItemID()) {
                 inventory.addItem(world.getWeapons().get(i));
-                result.append("Našel jsi zbraň: ").append(world.getWeapons().get(i).getItemName()).append("!\n");
+                result = result + "Našel jsi zbraň: " + world.getWeapons().get(i).getItemName() + "!\n";
                 world.getWeapons().remove(i);
             }
         }
@@ -31,12 +31,17 @@ public class TakeItem extends Command{
         for (int i = 0; i < world.getMedkits().size(); i++) {
             if (World.getCurrentLocation() == world.getMedkits().get(i).getItemID()) {
                 inventory.addItem(world.getMedkits().get(i));
-                result.append("Vzal jsi si medkit!\n");
+                result = result + "Vzal jsi si medkit!\n";
                 world.getMedkits().remove(i);
             }
         }
 
-        return result.isEmpty() ? "🔍 Nic tu není!" : result.toString().trim();
+        if(result.isEmpty()){
+            return "🔍 Nic tu není!";
+        }else {
+            return result;
+        }
+
     }
 
     @Override

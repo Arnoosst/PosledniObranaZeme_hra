@@ -14,16 +14,17 @@ public class MerchantCommand extends Command {
     private World world;
     private Merchant merchant;
     private Inventory inventory;
+    private Scanner sc;
 
-    public MerchantCommand(World world, Merchant merchant, Inventory inventory) {
+    public MerchantCommand(World world, Merchant merchant, Inventory inventory, Scanner scanner) {
         this.world = world;
         this.merchant = merchant;
         this.inventory = inventory;
+        this.sc = scanner;
     }
 
     @Override
     public String execute() {
-        Scanner sc = new Scanner(System.in);
         if (World.getCurrentLocation() == 1) {
             int choice;
             int choice2;

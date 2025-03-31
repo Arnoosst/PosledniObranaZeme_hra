@@ -11,14 +11,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
-
+/**
+ * Represents a merchant that sells and buys items.
+ */
 public class Merchant {
 
     private int coins;
     private int keyToSell;
     private ArrayList<Item> sortiment;
 
-
+    /**
+     * Creates a merchant with default coins and items to sell.
+     */
     public Merchant() {
         this.coins = 400;
         this.keyToSell = 2;
@@ -27,7 +31,12 @@ public class Merchant {
         loadMedKits();
     }
 
-
+    /**
+     * Finds an item in the merchant's inventory by its ID.
+     *
+     * @param id The ID of the item.
+     * @return The item if found, otherwise null.
+     */
     public Item locateItemFromId(int id){
         for(int i = 0; i < sortiment.size(); i++){
             if (id == sortiment.get(i).getItemID() ){
@@ -40,7 +49,12 @@ public class Merchant {
 
 
 
-
+    /**
+     * Allows the merchant to buy an item and add it to the inventory.
+     *
+     * @param item The item to be purchased.
+     * @return True if the item was successfully bought, otherwise false.
+     */
     public boolean buyItem(Item item) {
         if (item == null) {
             return false;
@@ -53,6 +67,13 @@ public class Merchant {
         return true;
     }
 
+
+    /**
+     * Sells an item from the merchant's inventory.
+     *
+     * @param id The ID of the item to sell.
+     * @return The sold item if it exists, otherwise null.
+     */
     public Item sellItem(int id) {
         Item item2;
         for (Item item : sortiment) {
@@ -67,6 +88,9 @@ public class Merchant {
 
 
 
+    /**
+     * Loads medkits from a file and adds them to the merchant's inventory.
+     */
     public  void loadMedKits() {
         try (BufferedReader br = new BufferedReader(new FileReader("medkitsMerchant.txt"))) {
             String line;
@@ -86,6 +110,9 @@ public class Merchant {
 
     }
 
+    /**
+     * Loads weapons from a file and adds them to the merchant's inventory.
+     */
     public  void loadWeapons() {
         try (BufferedReader br = new BufferedReader(new FileReader("weaponsMerchant.txt"))) {
             String line;
@@ -106,6 +133,12 @@ public class Merchant {
     }
 
 
+
+    /**
+     * Prints the merchant's inventory.
+     *
+     * @return A string representing the items available for sale.
+     */
     public String printSortiment() {
         String x;
         x = "### Sortiment Merchanta ### \n";

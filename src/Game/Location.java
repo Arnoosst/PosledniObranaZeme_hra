@@ -30,13 +30,6 @@ public class Location {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNeighbor(ArrayList<Integer> neighbor) {
-        this.neighbor = neighbor;
-    }
 
     @Override
     public String toString() {

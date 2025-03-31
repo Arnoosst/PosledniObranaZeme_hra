@@ -13,30 +13,34 @@ public class Search extends Command {
         this.world = world;
     }
 
-    //StringBuilder jsem si nechal poradit a vystvetlit od chatgpt
     @Override
     public String execute() {
-        StringBuilder result = new StringBuilder();
+        String result = "";
 
         for (Item medkit : world.getMedkits()) {
             if (World.getCurrentLocation() == medkit.getItemID()) {
-                result.append("Našel jsi Medkit!\n");
+                result = result + "Našel jsi Medkit!\n";
             }
         }
 
         for (Item weapon : world.getWeapons()) {
             if (World.getCurrentLocation() == weapon.getItemID()) {
-                result.append("Našel jsi zbraň!\n");
+                result = result + "Našel jsi zbraň!\n";
             }
         }
 
         for (Entity npc : world.getNpc()) {
             if (World.getCurrentLocation() == npc.getId()) {
-                result.append("Narazil jsi na přeživšího!\n");
+                result = result + "Narazil jsi na přeživšího!\n";
             }
         }
 
-        return result.isEmpty() ? "Nic jsi nenašel!" : result.toString();
+        if(result.isEmpty()){
+            return "Nic jsi nenašel!";
+        }else {
+            return result;
+        }
+
     }
 
     @Override

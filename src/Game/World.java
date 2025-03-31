@@ -13,19 +13,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class  World {
+/**
+ * Represents the game world, managing locations, entities, and items.
+ */
+public class World {
     private static HashMap<Integer, Location> map = new HashMap<>();
-    private  ArrayList<Entity> enemy = new ArrayList<>();
-    private  ArrayList<Entity> npc = new ArrayList<>();
-    private  ArrayList<Item> weapons = new ArrayList<>();
-    private  ArrayList<Item> medkits = new ArrayList<>();
-    private  ArrayList<Item> crates = new ArrayList<>();
+    private ArrayList<Entity> enemy = new ArrayList<>();
+    private ArrayList<Entity> npc = new ArrayList<>();
+    private ArrayList<Item> weapons = new ArrayList<>();
+    private ArrayList<Item> medkits = new ArrayList<>();
+    private ArrayList<Item> crates = new ArrayList<>();
     private static int currentLocation = 1;
     private static int killCount = 0;
     private static Boolean oxygen = false;
     private static Boolean underWaterSuit = false;
 
-    public  World() {
+    /**
+     * Constructs a World object and initializes game data.
+     */
+    public World() {
         loadMap();
         loadEnemy();
         loadMedKits();
@@ -33,9 +39,10 @@ public class  World {
         loadNpc();
     }
 
-
-
-    public  void loadMap() {
+    /**
+     * Loads the game map from a file.
+     */
+    public void loadMap() {
         try (BufferedReader br = new BufferedReader(new FileReader("map.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -53,10 +60,12 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public  void loadWeapons() {
+    /**
+     * Loads weapons data from a file.
+     */
+    public void loadWeapons() {
         try (BufferedReader br = new BufferedReader(new FileReader("weapon.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -72,10 +81,12 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public  void loadMedKits() {
+    /**
+     * Loads medkits data from a file.
+     */
+    public void loadMedKits() {
         try (BufferedReader br = new BufferedReader(new FileReader("medkits.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -91,10 +102,12 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public  void loadEnemy() {
+    /**
+     * Loads enemy data from a file.
+     */
+    public void loadEnemy() {
         try (BufferedReader br = new BufferedReader(new FileReader("enemy.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -111,10 +124,12 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public  void loadNpc() {
+    /**
+     * Loads NPC data from a file.
+     */
+    public void loadNpc() {
         try (BufferedReader br = new BufferedReader(new FileReader("npc.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -122,7 +137,6 @@ public class  World {
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 String speech = parts[2];
-
                 npc.add(new FriendlyFoe(speech, name, id));
             }
         } catch (FileNotFoundException e) {
@@ -130,10 +144,12 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public  void loadCrates() {
+    /**
+     * Loads crate data from a file.
+     */
+    public void loadCrates() {
         try (BufferedReader br = new BufferedReader(new FileReader("crates.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -148,11 +164,14 @@ public class  World {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-
-
+    /**
+     * Moves the player to a location if it is a valid neighbor.
+     *
+     * @param location The ID of the location to move to.
+     * @return true if the move was successful, false otherwise.
+     */
     public static boolean moveTo(int location) {
         Location loc = map.get(currentLocation);
         if (map.containsKey(location)) {
@@ -166,8 +185,12 @@ public class  World {
         return false;
     }
 
-
-    public  void removeEnemyFromLocation(Enemy en) {
+    /**
+     * Removes an enemy from the current location.
+     *
+     * @param en The enemy to be removed.
+     */
+    public void removeEnemyFromLocation(Enemy en) {
         for (int i = 0; i < enemy.size(); i++) {
             if (enemy.get(i).getId() == en.getId()) {
                 killCount++;
@@ -177,15 +200,17 @@ public class  World {
         }
     }
 
+    /**
+     * Retrieves the enemy present in the current location.
+     *
+     * @return The enemy in the current location, or null if no enemy is present.
+     */
     public Enemy returnenemyInLocation() {
-
         for (Entity en : enemy) {
-
             if (currentLocation == en.getId()) {
                 return (Enemy) en;
             }
         }
-
         return null;
     }
 
@@ -243,33 +268,18 @@ public class  World {
         World.underWaterSuit = underWaterSuit;
     }
 
-    public static void setMap(HashMap<Integer, Location> map) {
-        World.map = map;
-    }
+
 
     public ArrayList<Entity> getEnemy() {
         return enemy;
     }
 
-    public void setEnemy(ArrayList<Entity> enemy) {
-        this.enemy = enemy;
-    }
 
     public void setNpc(ArrayList<Entity> npc) {
         this.npc = npc;
     }
 
-    public void setWeapons(ArrayList<Item> weapons) {
-        this.weapons = weapons;
-    }
 
-    public void setMedkits(ArrayList<Item> medkits) {
-        this.medkits = medkits;
-    }
-
-    public void setCrates(ArrayList<Item> crates) {
-        this.crates = crates;
-    }
 
     public static void setKillCount(int killCount) {
         World.killCount = killCount;
