@@ -3,6 +3,8 @@ package Game.Items;
 /**
  * Represents a medkit item that extends Item.
  * This class adds a health increase.
+ *
+ * @author Vojtěch Malínek
  */
 public class Medkit extends Item {
     private int healthIncrease;

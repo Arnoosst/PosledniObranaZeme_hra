@@ -14,16 +14,35 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * Unit tests for loading the game world.
+ * This class verifies that all game items, entities are on locations,
+ * weapons, medkits, enemies, and NPCs are correctly initialized.
+ *
+ * @author Vojtěch Malínek
+ */
 public class MapLoadTest {
 
     private World world;
 
 
+    /**
+     * Sets up the necessary objects before each test case.
+     *
+     * @author Vojtěch Malínek
+     */
     @BeforeEach
     void setUp() {
         world = new World();
     }
 
+
+    /**
+     * Tests if the game map is correctly loaded and contains expected locations.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testLoadMap() {
 
@@ -34,6 +53,12 @@ public class MapLoadTest {
         assertEquals("Zeme", location.getName(), "ma to byt zeme");
     }
 
+
+    /**
+     * Tests if weapons are correctly loaded into the game world.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testLoadWeapons() {
 
@@ -44,6 +69,12 @@ public class MapLoadTest {
         assertEquals("Laserová pistole", weapon.getItemName(), "Název první zbraně by měl být Laserová pistole.");
     }
 
+
+    /**
+     * Tests if medkits are correctly loaded into the game world.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testLoadMedKits() {
 
@@ -54,6 +85,12 @@ public class MapLoadTest {
         assertEquals("Medkit", medkit.getItemName(), "Název prvního medkitu by měl být Medkit.");
     }
 
+
+    /**
+     * Tests if enemies are correctly loaded into the game world.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testLoadEnemy() {
         assertNotNull(world.getEnemy());
@@ -63,6 +100,12 @@ public class MapLoadTest {
         assertEquals("Xar'qun Scout", enemy.getName(), "Název prvního nepřítele by měl být Xar'qun Scout.");
     }
 
+
+    /**
+     * Tests if NPCs are correctly loaded into the game world.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testLoadNpc() {
         assertNotNull(world.getNpc());

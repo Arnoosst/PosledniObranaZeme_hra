@@ -6,6 +6,8 @@ import Game.Items.Weapon;
 
 /**
  * Represents a player in the game.
+ *
+ * @author Vojtěch Malínek
  */
 public class Player {
     private int health;
@@ -13,6 +15,8 @@ public class Player {
 
     /**
      * Initializes a new player with default health and damage values.
+     *
+     * @author Vojtěch Malínek
      */
     public Player() {
         this.health = 100;
@@ -22,6 +26,7 @@ public class Player {
     /**
      * Calculates the total damage increase from the player's inventory.
      *
+     * @author Vojtěch Malínek
      * @param inventory The player's inventory containing weapons.
      * @return The total additional damage from equipped weapons.
      */
@@ -39,6 +44,7 @@ public class Player {
     /**
      * Reduces the player's health by the given damage amount.
      *
+     * @author Vojtěch Malínek
      * @param damage The amount of damage taken.
      * @return The player's remaining health.
      */
@@ -50,6 +56,7 @@ public class Player {
     /**
      * Calculates the total damage the player can deal.
      *
+     * @author Vojtěch Malínek
      * @param damageIncrease The additional damage from weapons.
      * @return The total damage the player deals.
      */

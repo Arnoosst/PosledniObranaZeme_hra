@@ -7,6 +7,14 @@ import Game.NPC.Merchant;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
+/**
+ * Represents the console for interacting with the game.
+ * This class using user input, executes commands.
+ * It initializes commands for actions (moving, searching, talking to NPCs, and interacting with items).
+ *
+ * @author Vojtěch Malínek
+ */
 public class Console {
 
     private Scanner scanner;
@@ -23,6 +31,12 @@ public class Console {
     }
 
 
+    /**
+     * Initializes scanner for the game and commands,
+     * world, inventory, player, merchant, and scanner.
+     *
+     * @author Vojtěch Malínek
+     */
     private void initialization() {
         commands = new HashMap<>();
         world = new World();
@@ -44,6 +58,12 @@ public class Console {
 
     }
 
+    /**
+     * Executes the user command by from the input.
+     * If the command is not correctly written, it will return the user that he used wrong command.
+     *
+     * @author Vojtěch Malínek
+     */
     public void executeCommand() {
         System.out.println(">>");
         String command = scanner.nextLine();
@@ -51,11 +71,17 @@ public class Console {
             System.out.println(commands.get(command).execute());
             exit = commands.get(command).exit();
         } else {
-            System.out.println("spatny prikaz");
+            System.out.println("Neplatný příkaz. Zkuste to znovu.");
         }
     }
 
 
+
+    /**
+     * Starts the game by displaying the main menu, initialization the method,
+     *
+     * @author Vojtěch Malínek
+     */
     public void start() {
         gamePrints.mainMenu();
         initialization();

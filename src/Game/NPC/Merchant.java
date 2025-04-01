@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 /**
  * Represents a merchant that sells and buys items.
+ *
+ * @author Vojtěch Malínek
  */
 public class Merchant {
 
@@ -22,6 +24,8 @@ public class Merchant {
 
     /**
      * Creates a merchant with default coins and items to sell.
+     *
+     * @author Vojtěch Malínek
      */
     public Merchant() {
         this.coins = 400;
@@ -34,6 +38,7 @@ public class Merchant {
     /**
      * Finds an item in the merchant's inventory by its ID.
      *
+     * @author Vojtěch Malínek
      * @param id The ID of the item.
      * @return The item if found, otherwise null.
      */

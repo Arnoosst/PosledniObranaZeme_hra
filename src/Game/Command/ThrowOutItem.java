@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 /**
  * Represents a command to throw out an item from the inventory.
+ *
+ * @author Vojtěch Malínek
  */
 public class ThrowOutItem extends Command{
 
@@ -30,6 +32,7 @@ public class ThrowOutItem extends Command{
      * The user is asked to choose an item by its ID, and the item is then removed from the inventory
      * and placed in the world at the current location. (Medkits are placed in the medkits list)
      *
+     * @author Vojtěch Malínek
      * @return a message containing the result of the command, confirming the removal
      *         or saying that the item could not be found.
      */

@@ -2,6 +2,11 @@ package Game;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a location in the game world with an ID, a name, and a list of neighboring locations.
+ *
+ * @author Vojtěch Malínek
+ */
 public class Location {
     private int id;
     private String name;

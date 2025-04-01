@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 /**
  * Represents a command that allows the player to move to a different planet in the game.
+ *
+ * @author Vojtěch Malínek
  */
 public class Move extends Command {
 
@@ -29,6 +31,7 @@ public class Move extends Command {
      * If the player selects a valid planet and have the requirements, they are moved there.
      * Otherwise, an error message is returned.
      *
+     * @author Vojtěch Malínek
      * @return a message containing the result of the attempted move
      */
     @Override

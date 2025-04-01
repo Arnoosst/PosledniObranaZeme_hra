@@ -9,6 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Unit tests for the Attack command in the game.
+ * This class tests different scenarios related to combat mechanics,
+ * fighting enemies, player defeat, enemy defeat.
+ *
+ * @author Vojtěch Malínek
+ */
 public class AttackTest {
 
     private Player player;
@@ -17,6 +25,12 @@ public class AttackTest {
     private Attack attack;
     private GamePrints gamePrints;
 
+
+    /**
+     * Sets up the objects before each test.
+     *
+     * @author Vojtěch Malínek
+     */
     @BeforeEach
     void setUp() {
         world = new World();
@@ -26,6 +40,13 @@ public class AttackTest {
         attack = new Attack(world, player, inventory, gamePrints);
     }
 
+
+    /**
+     * Tests if the attack command is correctly returning,
+     * when there is no enemy in the current location.
+     *
+     * @author Vojtěch Malínek
+     */
    @Test
     public void testNoEnemyInLocation() {
         World.setCurrentLocation(2);
@@ -39,6 +60,11 @@ public class AttackTest {
     }
 
 
+    /**
+     * Tests if an enemy is correctly defeated.
+     *
+     * @author Vojtěch Malínek
+     */
    @Test
     public void testEnemyDefeated() {
 
@@ -53,6 +79,7 @@ public class AttackTest {
 
 
 
+
      /* Tento test funguje jen se musi upravit command attack, pokud hrac umre a to takto
 
       71            if (player.getHealth() <= 0) {
@@ -61,6 +88,24 @@ public class AttackTest {
       74            //System.exit(0);
       75            }
 
+     */
+
+
+    /**
+     * Tests if the player is defeated.
+     * Requires modification of the Attack command to return a message instead of exiting the game.
+     *
+     *
+     * Tento test funguje jen se musi upravit command attack, pokud hrac umre a to takto
+     *
+     *       71            if (player.getHealth() <= 0) {
+     *       72            return "💀 Hráč poražen!";
+     *       73            //gamePrints.loadLoseGame();
+     *       74            //System.exit(0);
+     *       75            }
+     *
+     *
+     * @author Vojtěch Malínek
      */
     @Test
     public void testPlayerDefeated() {
@@ -75,6 +120,12 @@ public class AttackTest {
         assertTrue(result.contains("💀 Hráč poražen!"));
     }
 
+
+    /**
+     * Tests if the player receives the Oxygen Tank after defeating the boss in the correct location.
+     *
+     * @author Vojtěch Malínek
+     */
    @Test
     public void testItemsAfterBossDefeated() {
 
@@ -87,6 +138,12 @@ public class AttackTest {
     }
 
 
+
+    /**
+     * Tests if no special item is given when defeating a boss outside the designated location.
+     *
+     * @author Vojtěch Malínek
+     */
     @Test
     public void testNoItemFromBossIfNotRightLocation() {
 

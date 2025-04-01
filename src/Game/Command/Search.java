@@ -7,7 +7,9 @@ import Game.World;
 
 
 /**
- * Represents a command to search the current location for items (medkits, weapons) and NPCs (survivors).
+ * Represents a command to search the current location for items (medkits, weapons) and NPCs.
+ *
+ * @author Vojtěch Malínek
  */
 public class Search extends Command {
 
@@ -21,6 +23,7 @@ public class Search extends Command {
     /**
      * Executes the command to search the current location for medkits, weapons, and NPCs.
      *
+     * @author Vojtěch Malínek
      * @return a message indicating what was found at the current location
      */
     @Override

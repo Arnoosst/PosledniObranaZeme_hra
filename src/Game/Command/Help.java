@@ -5,6 +5,8 @@ import Game.GamePrints;
 
 /**
  * Represents a command that provides help to the player in the game.
+ *
+ * @author Vojtěch Malínek
  */
 public class Help extends Command{
 
@@ -21,6 +23,7 @@ public class Help extends Command{
      * This method calls the loadHelp() method from the GamePrints object
      * to load and display the help information for the player.
      *
+     * @author Vojtěch Malínek
      * @return an empty string, as the help information is displayed via the loadHelp() method.
      */
     @Override

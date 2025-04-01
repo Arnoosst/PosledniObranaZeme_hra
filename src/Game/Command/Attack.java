@@ -12,6 +12,8 @@ import Game.World;
 /**
  * Represents the attack command in the game, where the player fights an enemy.
  * The player deals damage to an enemy and the enemy fights back until player or enemy is defeated.
+ *
+ * @author Vojtěch Malínek
  */
 public class Attack extends Command {
 
@@ -32,6 +34,7 @@ public class Attack extends Command {
      * The player and enemy take turns dealing damage to each other until one of them is defeated.
      * If the player defeats an enemy, rewards are given based on the current location.
      *
+     * @author Vojtěch Malínek
      * @return a string message indicating the outcome of the battle.
      */
     @Override

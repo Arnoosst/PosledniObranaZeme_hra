@@ -7,19 +7,25 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * The GamePrints class handles the loading and displaying of various game-related text files.
+ * The GamePrints class handles the loading and displaying game text files.
+ *
+ * @author Vojtěch Malínek
  */
 public class GamePrints {
 
     /**
      * Default constructor for GamePrints.
+     *
+     * @author Vojtěch Malínek
      */
     public GamePrints() {
     }
 
     /**
-     * Loads and prints the help text from "help.txt".
+     * Loads and prints the help text from help.txt.
      * Throws a runtime exception if the file is not found or cannot be read.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadHelp() {
         try (BufferedReader br = new BufferedReader(new FileReader("help.txt"))) {
@@ -35,8 +41,10 @@ public class GamePrints {
     }
 
     /**
-     * Loads and prints the start game text from "startGame.txt" with a delay between lines.
+     * Loads and prints the start game text from startGame.txt with a delay between lines.
      * Throws a runtime exception if the file is not found or cannot be read.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadStartGame() {
         try (BufferedReader br = new BufferedReader(new FileReader("startGame.txt"))) {
@@ -53,9 +61,11 @@ public class GamePrints {
     }
 
     /**
-     * Loads and prints the doctor dialogue from "doctorHayes.txt".
+     * Loads and prints the doctor dialogue from doctorHayes.txt.
      * The player must press enter to continue through the dialogue.
-     * Throws a runtime exception if the file is not found or cannot be read.
+     *
+     *
+     * @author Vojtěch Malínek
      */
     public void loadDoctor() {
         String x;
@@ -79,6 +89,8 @@ public class GamePrints {
     /**
      * Loads and prints the victory message from "wonGame.txt" with a delay between lines.
      * Throws a runtime exception if the file is not found or cannot be read.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadWon() {
         try (BufferedReader br = new BufferedReader(new FileReader("wonGame.txt"))) {
@@ -97,6 +109,8 @@ public class GamePrints {
     /**
      * Loads and prints the game over message from "loseGame.txt" with a delay between lines.
      * Throws a runtime exception if the file is not found or cannot be read.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadLoseGame() {
         try (BufferedReader br = new BufferedReader(new FileReader("loseGame.txt"))) {
@@ -117,6 +131,8 @@ public class GamePrints {
 
     /**
      * Displays the main menu and processes user input.
+     *
+     * @author Vojtěch Malínek
      */
     public void mainMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -153,8 +169,9 @@ public class GamePrints {
 
     /**
      * Delays execution for a given amount of milliseconds.
-     * This method was done with heklp of CHATgpt
+     * This method was done with hekl of chatGPT
      *
+     * @author chatGPT
      * @param ms The number of milliseconds to delay.
      */
     public void delay(int ms) {

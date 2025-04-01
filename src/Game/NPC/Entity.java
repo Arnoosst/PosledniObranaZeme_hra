@@ -3,6 +3,8 @@ package Game.NPC;
 /**
  * Represents entity with a name, id and speech.
  * This class is a base for other types of entities.
+ *
+ * @author Vojtěch Malínek
  */
 public class Entity {
     private String name;

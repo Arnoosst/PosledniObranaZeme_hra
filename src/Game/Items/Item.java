@@ -4,6 +4,8 @@ package Game.Items;
 /**
  * Represents item with a name, id and price.
  * This class is a base for other types of items.
+ *
+ * @author Vojtěch Malínek
  */
 public class Item {
     private String itemName;

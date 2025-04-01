@@ -5,6 +5,8 @@ import java.util.ArrayList;
 /**
  * Represents an inventory system that can have Item objects.
  * The inventory has a limit of 5 items and tracks coins and keys.
+ *
+ * @author Vojtěch Malínek
  */
 public class Inventory {
 
@@ -24,6 +26,7 @@ public class Inventory {
      * Adds an Item to the inventory.
      * If the item is null or the inventory is full, the item will not be added.
      *
+     * @author Vojtěch Malínek
      * @param item the item to be added to the inventory.
      * @return true if the item was successfully added, false otherwise.
      */

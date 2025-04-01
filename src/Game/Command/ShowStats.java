@@ -6,6 +6,8 @@ import Game.Player;
 
 /**
  * Represents a command to show the player's stats, including health, damage, coins, inventory
+ *
+ * @author Vojtěch Malínek
  */
 public class ShowStats extends Command {
 
@@ -24,6 +26,7 @@ public class ShowStats extends Command {
      * The player's health, damage (with any increases from items in the inventory), and coins are shown.
      * The player's inventory is also shown.
      *
+     * @author Vojtěch Malínek
      * @return a message containing the player's stats and the inventory.
      */
     public String execute() {

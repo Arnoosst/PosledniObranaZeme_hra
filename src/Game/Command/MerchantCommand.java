@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 /**
  * Represents a command that allows the player to interact with a merchant in the game.
+ *
+ * @author Vojtěch Malínek
  */
 public class MerchantCommand extends Command {
 
@@ -31,8 +33,8 @@ public class MerchantCommand extends Command {
 
     /**
      * Executes the merchant interaction command.
-     * Depending on the player's choice, they can either buy or sell items.
-     * If the player is at location 1, the merchant interaction is available, otherwise a message is displayed indicating no merchant is present.
+     * Depending on the player's choice, they can buy or sell items.
+     * If the player is at location 1, the merchant is available, otherwise a message is displayed saying no merchant is present.
      *
      * The player is prompted to choose between:
      * - Buying items from the merchant (option 1),
@@ -40,6 +42,7 @@ public class MerchantCommand extends Command {
      * - Exiting the merchant menu (option 3).
      * For buying and selling, the method checks if the player has sufficient coins or if the merchant has enough coins to complete the transaction.
      *
+     * @author Vojtěch Malínek
      * @return a string containing the outcome of the transaction
      */
     @Override

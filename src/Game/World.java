@@ -15,6 +15,8 @@ import java.util.List;
 
 /**
  * Represents the game world, managing locations, entities, and items.
+ *
+ * @author Vojtěch Malínek
  */
 public class World {
     private static HashMap<Integer, Location> map = new HashMap<>();
@@ -30,6 +32,8 @@ public class World {
 
     /**
      * Constructs a World object and initializes game data.
+     *
+     * @author Vojtěch Malínek
      */
     public World() {
         loadMap();
@@ -41,6 +45,8 @@ public class World {
 
     /**
      * Loads the game map from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadMap() {
         try (BufferedReader br = new BufferedReader(new FileReader("map.txt"))) {
@@ -64,6 +70,8 @@ public class World {
 
     /**
      * Loads weapons data from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadWeapons() {
         try (BufferedReader br = new BufferedReader(new FileReader("weapon.txt"))) {
@@ -85,6 +93,8 @@ public class World {
 
     /**
      * Loads medkits data from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadMedKits() {
         try (BufferedReader br = new BufferedReader(new FileReader("medkits.txt"))) {
@@ -106,6 +116,8 @@ public class World {
 
     /**
      * Loads enemy data from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadEnemy() {
         try (BufferedReader br = new BufferedReader(new FileReader("enemy.txt"))) {
@@ -128,6 +140,8 @@ public class World {
 
     /**
      * Loads NPC data from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadNpc() {
         try (BufferedReader br = new BufferedReader(new FileReader("npc.txt"))) {
@@ -169,6 +183,7 @@ public class World {
     /**
      * Moves the player to a location if it is a valid neighbor.
      *
+     * @author Vojtěch Malínek
      * @param location The ID of the location to move to.
      * @return true if the move was successful, false otherwise.
      */
@@ -188,6 +203,7 @@ public class World {
     /**
      * Removes an enemy from the current location.
      *
+     * @author Vojtěch Malínek
      * @param en The enemy to be removed.
      */
     public void removeEnemyFromLocation(Enemy en) {
@@ -203,6 +219,7 @@ public class World {
     /**
      * Retrieves the enemy present in the current location.
      *
+     * @author Vojtěch Malínek
      * @return The enemy in the current location, or null if no enemy is present.
      */
     public Enemy returnenemyInLocation() {
@@ -214,10 +231,6 @@ public class World {
         return null;
     }
 
-
-    public ArrayList<Item> getCrates() {
-        return crates;
-    }
 
     public static int getCurrentLocation() {
         return currentLocation;
