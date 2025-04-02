@@ -11,12 +11,15 @@ import java.util.ArrayList;
 public class Inventory {
 
     private  ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<GemStone> gemStones = new ArrayList<>();
     private int coins;
     private int keys;
 
 
     public Inventory() {
         this.inventory = new ArrayList<>();
+        this.gemStones = new ArrayList<>();
+        this.keys = 1;
         this.coins = 500;
     }
 
@@ -75,6 +78,14 @@ public class Inventory {
         return null;
     }
 
+    public boolean addGemStone(GemStone gemStone) {
+        if (gemStone == null) {
+            return false;
+        }
+        inventory.add(gemStone);
+        return true;
+    }
+
 
 
 
@@ -121,4 +132,11 @@ public class Inventory {
         this.coins = coins;
     }
 
+    public ArrayList<GemStone> getGemStones() {
+        return gemStones;
+    }
+
+    public void setGemStones(ArrayList<GemStone> gemStones) {
+        this.gemStones = gemStones;
+    }
 }

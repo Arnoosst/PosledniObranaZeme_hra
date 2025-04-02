@@ -86,9 +86,9 @@ public class Attack extends Command {
 
 
             if (player.getHealth() <= 0) {
-                return "💀 Hráč poražen!";
-                //gamePrints.loadLoseGame();
-                //System.exit(0);
+                //return "💀 Hráč poražen!";
+                gamePrints.loadLoseGame();
+                System.exit(0);
             }
         }
 

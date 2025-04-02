@@ -24,7 +24,7 @@ public class World {
     private ArrayList<Entity> npc = new ArrayList<>();
     private ArrayList<Item> weapons = new ArrayList<>();
     private ArrayList<Item> medkits = new ArrayList<>();
-    private ArrayList<Item> crates = new ArrayList<>();
+    private ArrayList<Crate> crates = new ArrayList<>();
     private static int currentLocation = 1;
     private static int killCount = 0;
     private static Boolean oxygen = false;
@@ -114,6 +114,9 @@ public class World {
         }
     }
 
+
+
+
     /**
      * Loads enemy data from a file.
      *
@@ -168,10 +171,38 @@ public class World {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
+                GemStone gemStone = null;
+                boolean found = false;
+                int planetID = Integer.parseInt(parts[2]);
+                String name = parts[3];
+            }
+
+            loadGemStones();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+   private void loadGemStones(){
+        try (BufferedReader br = new BufferedReader(new FileReader("gemStones.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
                 int id = Integer.parseInt(parts[0]);
-                String name = parts[2];
-                int price = Integer.parseInt(parts[3]);
-                crates.add(new Crates(name, id, price));
+                String name = parts[1];
+                int price = Integer.parseInt(parts[2]);
+
+                GemStone gemStone = new GemStone(name, id, price);
+
+                for(int i = 0; i < crates.size(); i++){
+                    if(crates.get(i).getPlanetID() == id){
+                        crates.get(i).setGemStone(gemStone);
+                    }
+                }
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -296,6 +327,30 @@ public class World {
 
     public static void setKillCount(int killCount) {
         World.killCount = killCount;
+    }
+
+    public static void setMap(HashMap<Integer, Location> map) {
+        World.map = map;
+    }
+
+    public void setEnemy(ArrayList<Entity> enemy) {
+        this.enemy = enemy;
+    }
+
+    public void setWeapons(ArrayList<Item> weapons) {
+        this.weapons = weapons;
+    }
+
+    public void setMedkits(ArrayList<Item> medkits) {
+        this.medkits = medkits;
+    }
+
+    public ArrayList<Crate> getCrates() {
+        return crates;
+    }
+
+    public void setCrates(ArrayList<Crate> crates) {
+        this.crates = crates;
     }
 
     @Override

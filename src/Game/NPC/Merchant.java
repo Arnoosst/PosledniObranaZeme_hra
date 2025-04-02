@@ -137,6 +137,19 @@ public class Merchant {
 
     }
 
+    public void loadMerchnatPrint(){
+        try (BufferedReader br = new BufferedReader(new FileReader("merchantPrint.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     /**

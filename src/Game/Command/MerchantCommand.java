@@ -51,14 +51,13 @@ public class MerchantCommand extends Command {
             int choice;
             int choice2;
 
-            System.out.println("Heh heh heh… Vítej, cizinče! Vidím, že máš zájem o pořádný arzenál. \n" +
-                    "Máš něco, co bys chtěl prodat? \n Nebo hledáš něco, co by ti pomohlo na tvé krvavé cestě? \n" +
-                    "Heh heh… Podívej se, co tady mám! Každý kousek je mistrovské dílo… ale jak se říká, všechno má svou cenu. \n" +
-                    "Tak co, cizinče? Máš zájem o nějaké věci?");
+            merchant.loadMerchnatPrint();
+
+            System.out.println();
 
             while (true) {
                 try {
-                    System.out.println("Chceš koupit nebo prodat? \n 1 = Koupit \n 2 = Prodat \n 3 = Odejít \n >>");
+                    System.out.println("Chceš koupit nebo prodat? \n 1 = Koupit \n 2 = Prodat  \n 3 = Drahokamy \n 4 = Odejít \n >>");
                     choice = sc.nextInt();
 
                     switch (choice) {
@@ -118,10 +117,18 @@ public class MerchantCommand extends Command {
                             break;
 
                         case 3:
+
+                            //dodelat metodu, pro kazdy case to sem implementovat
+                            //dodelat ty vyjimky u nacitani ze souboru to throw new je blbost protoze to vyhodi novou podminku
+                            //zkontrolovat ty crate jetli funguji, rozhodnout se jestli klice pujdou kupovat nebo dropovat z enemy
+                            //pokud budu chtit tak kazdymu enemy dat kolik dropne coinu
+                            //balancovat hru
+
+                        case 4:
                             return "Měj se, cizinče!";
 
                         default:
-                            System.out.println("Heh heh, cizinče, napiš číslo 1, 2 nebo 3. Co chceš udělat?");
+                            System.out.println("Heh heh, cizinče, napiš číslo 1, 2, 3 nebo 4. Co chceš udělat?");
                             break;
                     }
                 } catch (InputMismatchException e) {

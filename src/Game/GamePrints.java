@@ -169,7 +169,7 @@ public class GamePrints {
 
     /**
      * Delays execution for a given amount of milliseconds.
-     * This method was done with hekl of chatGPT
+     * This method was done with help of chatGPT
      *
      * @author chatGPT
      * @param ms The number of milliseconds to delay.

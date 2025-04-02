@@ -1,2 +1,3 @@
-3;darhokam;1000
-7;drahokam;1000
+3;name
+5;name
+7;name
