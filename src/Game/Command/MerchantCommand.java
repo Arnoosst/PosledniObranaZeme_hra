@@ -49,7 +49,7 @@ public class MerchantCommand extends Command {
     public String execute() {
         if (World.getCurrentLocation() == 1) {
             int choice;
-            int choice2;
+            int choice2 = 0;
 
             merchant.loadMerchnatPrint();
 
@@ -62,62 +62,16 @@ public class MerchantCommand extends Command {
 
                     switch (choice) {
                         case 1:
-                            System.out.println(merchant.printSortiment());
-                            System.out.println("Hmm… Tak jaké věci tě zajímají? Napiš ID zbraně/medkitu, který chceš koupit (nebo 0 pro návrat).");
-                            while (true) {
-                                try {
-                                    choice2 = sc.nextInt();
-                                    if (choice2 == 0) break;
-                                    Item itemToBuy = merchant.locateItemFromId(choice2);
-                                    if (itemToBuy == null) {
-                                        System.out.println("Hmm… To zboží nemám. Zkus jiné ID nebo napiš 0 pro návrat.");
-                                    } else if (inventory.getCoins() < itemToBuy.getItemPrice()) {
-                                        System.out.println("Heh… Nemáš dost peněz, cizinče. Co třeba sehnat víc?");
-                                    } else {
-                                        inventory.addItem(itemToBuy);
-                                        inventory.setCoins(inventory.getCoins() - itemToBuy.getItemPrice());
-                                        merchant.setCoins(merchant.getCoins() + itemToBuy.getItemPrice());
-                                        merchant.sellItem(choice2);
-                                        System.out.println("Kupuješ? Dobrá volba, cizinče. Užij si to.");
-                                        break;
-                                    }
-                                }catch (InputMismatchException e) {
-                                    System.out.println("Neplatný vstup! Napiš číslo.");
-                                    sc.nextLine();
-                                }
-                            }
+                            choice1Buy(choice2);
                             break;
 
                         case 2:
-                            System.out.println(inventory.printInventory());
-                            System.out.println("Máš něco, co bys rád prodal? Napiš ID zbraně/medkitu, který chceš prodat (nebo 0 pro návrat).");
-                            while (true) {
-                                try {
-
-                                    choice2 = sc.nextInt();
-                                    if (choice2 == 0) break;
-                                    Item itemToSell = inventory.locateItemFromId(choice2);
-                                    if (itemToSell == null) {
-                                        System.out.println("Hmm… Ten předmět nemáš. Zkus napsat správné ID nebo napiš 0 pro návrat.");
-                                    } else if (merchant.getCoins() < itemToSell.getItemPrice()) {
-                                        System.out.println("Heh… Nemám dost peněz, cizinče. Možná příště.");
-                                    } else {
-                                        inventory.setCoins(inventory.getCoins() + itemToSell.getItemPrice());
-                                        merchant.setCoins(merchant.getCoins() - itemToSell.getItemPrice());
-                                        merchant.buyItem(itemToSell);
-                                        inventory.removeItem(itemToSell);
-                                        System.out.println("Heh heh… Dobrý obchod, cizinče. Teď to bude ještě lepší.");
-                                        break;
-                                    }
-                                }catch (InputMismatchException e) {
-                                    System.out.println("Neplatný vstup! Napiš číslo.");
-                                    sc.nextLine();
-                                }
-                            }
+                            choice2Buy(choice2);
                             break;
 
                         case 3:
 
+                            break;
                             //dodelat metodu, pro kazdy case to sem implementovat
                             //dodelat ty vyjimky u nacitani ze souboru to throw new je blbost protoze to vyhodi novou podminku
                             //zkontrolovat ty crate jetli funguji, rozhodnout se jestli klice pujdou kupovat nebo dropovat z enemy
@@ -139,6 +93,81 @@ public class MerchantCommand extends Command {
         } else {
             return "Tady nikdo není";
         }
+    }
+
+
+
+    private void choice1Buy(int choice2){
+        System.out.println(merchant.printSortiment());
+        System.out.println("Hmm… Tak jaké věci tě zajímají? Napiš ID zbraně/medkitu, který chceš koupit (nebo 0 pro návrat).");
+        while (true) {
+            try {
+                choice2 = sc.nextInt();
+                if (choice2 == 0) break;
+                Item itemToBuy = merchant.locateItemFromId(choice2);
+                if (itemToBuy == null) {
+                    System.out.println("Hmm… To zboží nemám. Zkus jiné ID nebo napiš 0 pro návrat.");
+                } else if (inventory.getCoins() < itemToBuy.getItemPrice()) {
+                    System.out.println("Heh… Nemáš dost peněz, cizinče. Co třeba sehnat víc?");
+                } else {
+                    inventory.addItem(itemToBuy);
+                    inventory.setCoins(inventory.getCoins() - itemToBuy.getItemPrice());
+                    merchant.setCoins(merchant.getCoins() + itemToBuy.getItemPrice());
+                    merchant.sellItem(choice2);
+                    System.out.println("Kupuješ? Dobrá volba, cizinče. Užij si to.");
+                    break;
+                }
+            }catch (InputMismatchException e) {
+                System.out.println("Neplatný vstup! Napiš číslo.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private void choice2Buy(int choice2){
+        System.out.println(inventory.printInventory());
+        System.out.println("Máš něco, co bys rád prodal? Napiš ID zbraně/medkitu, který chceš prodat (nebo 0 pro návrat).");
+        while (true) {
+            try {
+                choice2 = sc.nextInt();
+                if (choice2 == 0) break;
+                Item itemToSell = inventory.locateItemFromId(choice2);
+                if (itemToSell == null) {
+                    System.out.println("Hmm… Ten předmět nemáš. Zkus napsat správné ID nebo napiš 0 pro návrat.");
+                } else if (merchant.getCoins() < itemToSell.getItemPrice()) {
+                    System.out.println("Heh… Nemám dost peněz, cizinče. Možná příště.");
+                } else {
+                    inventory.setCoins(inventory.getCoins() + itemToSell.getItemPrice());
+                    merchant.setCoins(merchant.getCoins() - itemToSell.getItemPrice());
+                    merchant.buyItem(itemToSell);
+                    inventory.removeItem(itemToSell);
+                    System.out.println("Heh heh… Dobrý obchod, cizinče. Teď to bude ještě lepší.");
+                    break;
+                }
+            }catch (InputMismatchException e) {
+                System.out.println("Neplatný vstup! Napiš číslo.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private void choice3Buy(int choice2){
+        System.out.println("Co bys potřeboval?");
+        System.out.println("1. Koupit mapu pro bednu, která má drahokam");
+        System.out.println("2. Prodat drahokamy");
+        System.out.println("0. Návrat");
+        while (true) {
+            choice2 = sc.nextInt();
+            if (choice2 == 0) break;
+            else if (choice2 == 1) {
+
+            }
+            else if (choice2 == 2) {
+
+            }
+        }
+
+
     }
 
     @Override
