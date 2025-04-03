@@ -62,9 +62,9 @@ public class World {
                 map.put(id, new Location(id, nazev, neighbor));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"map.txt\" ");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"map.txt\" ");
         }
     }
 
@@ -85,9 +85,9 @@ public class World {
                 weapons.add(new Weapon(name, id, damage, price));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"weapon.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"weapon.txt\"");
         }
     }
 
@@ -108,9 +108,9 @@ public class World {
                 medkits.add(new Medkit(name, id, health, price));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"medkits.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"medkits.txt\"");
         }
     }
 
@@ -132,12 +132,14 @@ public class World {
                 int health = Integer.parseInt(parts[2]);
                 String speech = parts[3];
                 int damage = Integer.parseInt(parts[4]);
-                enemy.add(new Enemy(speech, name, id, health, damage));
+
+                int price = Integer.parseInt(parts[5]);
+                enemy.add(new Enemy(speech, name, id, health, damage, price));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"enemy.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"enemy.txt\"");
         }
     }
 
@@ -157,9 +159,9 @@ public class World {
                 npc.add(new FriendlyFoe(speech, name, id));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"npc.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"npc.txt\"");
         }
     }
 
@@ -179,9 +181,9 @@ public class World {
 
             loadGemStones();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"crates.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"crates.txt\"");
         }
     }
 
@@ -205,9 +207,9 @@ public class World {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor 'gemStones.txt' nebyl nalezen. \"gemStones.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru 'gemStones.txt'. \"gemStones.txt\"");
         }
     }
 

@@ -68,7 +68,7 @@ public class AttackTest {
    @Test
     public void testEnemyDefeated() {
 
-        Enemy enemy = new Enemy("a", "Test Enemy", 9, 10, 10);
+        Enemy enemy = new Enemy("a", "Test Enemy", 9, 10, 10, 100);
         world.getEnemy().add(enemy);
         World.setCurrentLocation(9);
 
@@ -110,7 +110,7 @@ public class AttackTest {
     @Test
     public void testPlayerDefeated() {
 
-        Enemy enemy = new Enemy("b", "Test Enemy", 9, 1000, 10000);
+        Enemy enemy = new Enemy("b", "Test Enemy", 9, 1000, 10000, 100);
         world.getEnemy().addLast(enemy);
         World.setCurrentLocation(9);
         player.setHealth(1);

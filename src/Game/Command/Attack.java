@@ -55,6 +55,13 @@ public class Attack extends Command {
             if (en.getHealth() <= 0) {
                 world.removeEnemyFromLocation(en);
 
+                if (World.getCurrentLocation() == 2 || World.getCurrentLocation() == 3) {
+                    System.out.println("⚠️ Boj skončil! ⚠️");
+                    System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
+                    inventory.setKeys(inventory.getKeys() + 1);
+                    return "Získal jsi klíč k tajné bedně";
+                }
+
 
                 if (World.getCurrentLocation() == 4) {
                     World.setOxygen(true);
@@ -77,7 +84,8 @@ public class Attack extends Command {
                 }
 
 
-                inventory.setCoins(inventory.getCoins() + 100 * en.getId());
+                inventory.setCoins(inventory.getCoins() + en.getCoinPrice());
+                System.out.println("Nepřítel měl u sebe " + en.getCoinPrice() + " mincí.");
                 return "Nepřítel poražen. Získáváš respekt vesmíru!";
             }
 

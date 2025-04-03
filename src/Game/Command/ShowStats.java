@@ -34,8 +34,9 @@ public class ShowStats extends Command {
 
         return "❤️ Zdraví: " + player.getHealth() + "\n" +
                 "⚔️ Poškození: " + (player.getDamage() + player.damageIncrease(inv)) + "\n" +
-                "💰 Mince: " + inv.getCoins() + "\n";
-
+                "💰 Mince: " + inv.getCoins() + "\n" +
+                "🔑 Klíče: " + inv.getKeys() + "\n" +
+                "💎 Drahokamy: " + inv.getGemStones().size() + "\n";
     }
 
     @Override

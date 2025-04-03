@@ -1,3 +1,3 @@
-3;name;price
-5;name;price
-7;name;price
+3;Ethereal Sapphire;1000
+5;Crimson Ruby;2000
+7;Void Obsidian;3000

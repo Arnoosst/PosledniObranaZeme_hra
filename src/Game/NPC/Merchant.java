@@ -2,6 +2,7 @@ package Game.NPC;
 
 
 import Game.Items.Item;
+import Game.Items.MapForCrate;
 import Game.Items.Medkit;
 import Game.Items.Weapon;
 
@@ -21,6 +22,7 @@ public class Merchant {
     private int coins;
     private int keyToSell;
     private ArrayList<Item> sortiment;
+    private ArrayList<MapForCrate> mapsForCrates;
 
     /**
      * Creates a merchant with default coins and items to sell.
@@ -31,8 +33,10 @@ public class Merchant {
         this.coins = 400;
         this.keyToSell = 2;
         sortiment = new ArrayList<>();
+        mapsForCrates = new ArrayList<>();
         loadWeapons();
         loadMedKits();
+        loadMapsForCrates();
     }
 
     /**
@@ -46,6 +50,15 @@ public class Merchant {
         for(int i = 0; i < sortiment.size(); i++){
             if (id == sortiment.get(i).getItemID() ){
                 return sortiment.get(i);
+            }
+        }
+        return null;
+    }
+
+    public MapForCrate locateMapFromId(int id){
+        for(int i = 0; i < mapsForCrates.size(); i++){
+            if (id == mapsForCrates.get(i).getItemID() ){
+                return mapsForCrates.get(i);
             }
         }
         return null;
@@ -108,9 +121,9 @@ public class Merchant {
                 sortiment.add(new Medkit(name, id, health, price));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"medkitsMerchant.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"medkitsMerchant.txt\"");
         }
 
     }
@@ -130,9 +143,9 @@ public class Merchant {
                 sortiment.add(new Weapon(name, id, damage, price));
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"weaponsMerchant.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"weaponsMerchant.txt\"");
         }
 
     }
@@ -144,10 +157,28 @@ public class Merchant {
                 System.out.println(line);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"merchantPrint.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"merchantPrint.txt\"");
         }
+    }
+
+    public void loadMapsForCrates() {
+        try (BufferedReader br = new BufferedReader(new FileReader("mapForCrates.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
+                String name = parts[1];
+                int id = Integer.parseInt(parts[0]);
+                int price = Integer.parseInt(parts[2]);
+                mapsForCrates.add(new MapForCrate(name, id, price));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor nebyl nalezen. \"mapForCrates.txt\"");
+        } catch (IOException e) {
+            System.out.println("Chyba při čtení souboru. \"mapForCrates.txt\"");
+        }
+
     }
 
 
@@ -164,6 +195,20 @@ public class Merchant {
             x += "Název: " + item.getItemName() + "\n" ;
             x += "ID: " + item.getItemID() + "\n";
             x += "Cena: " + item.getItemPrice()+ "\n";
+            x+= "------------------------- \n";
+        }
+        return x;
+    }
+
+
+
+    public String printMapsForCrates() {
+        String x;
+        x = "### Mapy Merchanta ### \n";
+        for (MapForCrate maps : mapsForCrates) {
+            x += "Název: " + maps.getItemName() + "\n" ;
+            x += "ID: " + maps.getItemID() + "\n";
+            x += "Cena: " + maps.getItemPrice()+ "\n";
             x+= "------------------------- \n";
         }
         return x;
@@ -192,6 +237,14 @@ public class Merchant {
 
     public void setSortiment(ArrayList<Item> sortiment) {
         this.sortiment = sortiment;
+    }
+
+    public ArrayList<MapForCrate> getMapsForCrates() {
+        return mapsForCrates;
+    }
+
+    public void setMapsForCrates(ArrayList<MapForCrate> mapsForCrates) {
+        this.mapsForCrates = mapsForCrates;
     }
 
     @Override

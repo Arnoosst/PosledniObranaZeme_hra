@@ -34,9 +34,9 @@ public class GamePrints {
                 System.out.println(line);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"help.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"help.txt\"");
         }
     }
 
@@ -54,9 +54,9 @@ public class GamePrints {
                 delay(1000);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"startGame.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"startGame.txt\"");
         }
     }
 
@@ -80,9 +80,9 @@ public class GamePrints {
                 x = sc.nextLine();
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"doctorHayes.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"doctorHayes.txt\"");
         }
     }
 
@@ -99,10 +99,10 @@ public class GamePrints {
                 System.out.println(line);
                 delay(1000);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        }catch (FileNotFoundException e) {
+            System.out.println("Soubor nebyl nalezen. \"wonGame.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"wonGame.txt\"");
         }
     }
 
@@ -120,9 +120,9 @@ public class GamePrints {
                 delay(1000);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Soubor nebyl nalezen. \"loseGame.txt\"");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Chyba při čtení souboru. \"loseGame.txt\"");
         }
     }
 

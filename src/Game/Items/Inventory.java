@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Inventory {
 
-    private  ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<GemStone> gemStones = new ArrayList<>();
     private int coins;
     private int keys;
@@ -106,6 +106,9 @@ public class Inventory {
         }
         return x;
     }
+
+
+
 
 
     public int getKeys() {
