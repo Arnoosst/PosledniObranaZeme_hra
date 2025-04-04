@@ -167,6 +167,8 @@ public class World {
 
     /**
      * Loads crate data from a file.
+     *
+     * @author Vojtěch Malínek
      */
     public void loadCrates() {
         try (BufferedReader br = new BufferedReader(new FileReader("crates.txt"))) {
@@ -188,7 +190,11 @@ public class World {
     }
 
 
-
+    /**
+     * Loads gemstone data from a file.
+     *
+     * @author Vojtěch Malínek
+     */
    private void loadGemStones(){
         try (BufferedReader br = new BufferedReader(new FileReader("gemStones.txt"))) {
             String line;
@@ -326,43 +332,12 @@ public class World {
     }
 
 
-
     public static void setKillCount(int killCount) {
         World.killCount = killCount;
-    }
-
-    public static void setMap(HashMap<Integer, Location> map) {
-        World.map = map;
-    }
-
-    public void setEnemy(ArrayList<Entity> enemy) {
-        this.enemy = enemy;
-    }
-
-    public void setWeapons(ArrayList<Item> weapons) {
-        this.weapons = weapons;
-    }
-
-    public void setMedkits(ArrayList<Item> medkits) {
-        this.medkits = medkits;
     }
 
     public ArrayList<Crate> getCrates() {
         return crates;
     }
 
-    public void setCrates(ArrayList<Crate> crates) {
-        this.crates = crates;
-    }
-
-    @Override
-    public String toString() {
-        return "World{" +
-                "enemy=" + enemy +
-                ", npc=" + npc +
-                ", weapons=" + weapons +
-                ", medkits=" + medkits +
-                ", crates=" + crates +
-                '}';
-    }
 }

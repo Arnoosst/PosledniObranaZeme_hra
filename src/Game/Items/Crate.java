@@ -5,6 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+
+/**
+ * Represents a crate that is an unmovable object in the world.
+ * The crate can be opened, and it will give to the player a gemstone.
+ *
+ * @author Vojtěch Malínek
+ */
 public class Crate {
     private GemStone gemStone;
     private boolean found;
@@ -20,18 +27,12 @@ public class Crate {
 
 
 
-
     public GemStone getGemStone() {
         return gemStone;
     }
 
-    public boolean setGemStone(GemStone gemStone) {
-        if(gemStone == null){
-            return false;
-        }else {
-            this.gemStone = gemStone;
-            return true;
-        }
+    public void setGemStone(GemStone gemStone) {
+        this.gemStone = gemStone;
     }
 
     public boolean isFound() {

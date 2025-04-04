@@ -39,7 +39,8 @@ public class MerchantCommand extends Command {
      * The player is prompted to choose between:
      * - Buying items from the merchant (option 1),
      * - Selling items to the merchant (option 2),
-     * - Exiting the merchant menu (option 3).
+     * - Gemstone menu, where you can buy maps and sell gemstone (option 3).
+     * - Exiting the merchant menu (option 4).
      * For buying and selling, the method checks if the player has sufficient coins or if the merchant has enough coins to complete the transaction.
      *
      * @author Vojtěch Malínek
@@ -92,6 +93,13 @@ public class MerchantCommand extends Command {
 
 
 
+    /**
+     * Handles the menu for purchasing items (weapons or medkits) from the merchant.
+     * Checks if the player have enough coins and updates both inventories.
+     *
+     * @param choice2 the item ID the player wants to buy
+     * @author Vojtěch Malínek
+     */
     private void choice1Buy(int choice2){
         System.out.println(merchant.printSortiment());
         System.out.println("Hmm… Tak jaké věci tě zajímají? Napiš ID zbraně/medkitu, který chceš koupit (nebo 0 pro návrat).");
@@ -119,6 +127,14 @@ public class MerchantCommand extends Command {
         }
     }
 
+
+    /**
+     * Handles the menu for selling items from the player's inventory to the merchant.
+     * Checks if the merchant has enough coins and updates both inventories.
+     *
+     * @param choice2 the item ID the player wants to sell
+     * @author Vojtěch Malínek
+     */
     private void choice2Buy(int choice2){
         System.out.println(inventory.printInventory());
         System.out.println("Máš něco, co bys rád prodal? Napiš ID zbraně/medkitu, který chceš prodat (nebo 0 pro návrat).");
@@ -146,6 +162,18 @@ public class MerchantCommand extends Command {
         }
     }
 
+
+
+
+
+    /**
+     * Handles the gemstone menu. Allows the player to:
+     * - Buy a map to locate a crate with a gemstone.
+     * - Sell all collected gemstones to the merchant.
+     *
+     * @param choice2 choice made by the player
+     * @author Vojtěch Malínek
+     */
     private void choice3Buy(int choice2) {
         int choice3;
         System.out.println("Ahh, cizinče! Co kupuješ?");
