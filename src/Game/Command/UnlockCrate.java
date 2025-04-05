@@ -40,6 +40,7 @@ public class UnlockCrate extends Command{
                     }
                     if (inventory.getKeys() >= 1) {
                         inventory.setKeys(inventory.getKeys() - 1);
+                        System.out.println(world.getCrates().get(i).getGemStone().getItemName());
                         inventory.addGemStone(world.getCrates().get(i).getGemStone());
                         System.out.println("Podařilo se ti získat nový drahokam: " + world.getCrates().get(i).getGemStone().getItemName());
                         world.getCrates().get(i).setGemStone(null);

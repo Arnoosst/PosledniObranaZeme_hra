@@ -59,7 +59,8 @@ public class Attack extends Command {
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
                     inventory.setKeys(inventory.getKeys() + 1);
-                    return "Získal jsi klíč k tajné bedně";
+                    inventory.setCoins(inventory.getCoins() + en.getCoinPrice());
+                    return "Získal jsi klíč k tajné bedně a mince";
                 }
 
 
@@ -67,7 +68,9 @@ public class Attack extends Command {
                     World.setOxygen(true);
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Prohledáváš tělo bosse... a nacházíš něco nečekaného!");
-                    return "Získal jsi OXYGEN TANK!";
+                    System.out.println("Získal jsi OXYGEN TANK!");
+
+
 
                 }
 
@@ -75,7 +78,12 @@ public class Attack extends Command {
                     World.setUnderWaterSuit(true);
                     System.out.println("⚠️ Boj skončil! ⚠️");
                     System.out.println("Boss padl k zemi... ale co to má u sebe?");
-                    return "Získal jsi UNDERWATER SUIT!";
+                    System.out.println();
+                    System.out.println("Získal jsi UNDERWATER SUIT!");
+
+                    inventory.setCoins(inventory.getCoins() + en.getCoinPrice());
+                    System.out.println();
+                    return "Nepřítel měl u sebe " + en.getCoinPrice() + " mincí.";
 
                 }
                 if (World.getCurrentLocation() == 8) {

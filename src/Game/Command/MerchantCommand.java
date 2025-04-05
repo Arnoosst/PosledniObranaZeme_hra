@@ -7,6 +7,7 @@ import Game.World;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -175,84 +176,102 @@ public class MerchantCommand extends Command {
      * @author Vojtěch Malínek
      */
     private void choice3Buy(int choice2) {
-        int choice3;
-        System.out.println("Ahh, cizinče! Co kupuješ?");
-        System.out.println("1. Koupit mapu pro bednu, která má drahokam");
-        System.out.println("2. Prodat drahokamy");
-        System.out.println("0. Návrat");
-
-        while (true) {
+        boolean inSubMenu = true;
+        while (inSubMenu) {
+            System.out.println("Ahh, cizinče! Co kupuješ?");
+            System.out.println("1. Koupit mapu pro bednu, která má drahokam");
+            System.out.println("2. Prodat drahokamy");
+            System.out.println("0. Návrat");
+            System.out.print(">> ");
             try {
-                System.out.print(">> ");
                 choice2 = sc.nextInt();
                 sc.nextLine();
-
-                if (choice2 == 0) {
-                    System.out.println("Hehehe... Přijď zas!");
-                    break;
-                } else if (choice2 == 1) {
-                    System.out.println("Co kupuješ?");
-                    System.out.println(merchant.printMapsForCrates());
-
-                    while (true) {
-                        try {
-                            System.out.println("Vyber si, cizinče! (Zadej ID mapy nebo 0 pro návrat)");
-                            System.out.print(">> \n");
-                            choice3 = sc.nextInt();
-                            sc.nextLine();
-
-                            if (choice3 == 0) {
-                                System.out.println("Heh, změna plánu? Jak chceš!");
-                                break;
-                            }
-
-                            MapForCrate mapForCrate = merchant.locateMapFromId(choice3);
-
-                            if (mapForCrate == null) {
-                                System.out.println("Hmm… To nemám na skladě. Zkus něco jiného, nebo napiš 0 pro návrat.");
-                            } else if (inventory.getCoins() < mapForCrate.getItemPrice()) {
-                                System.out.println("Nemáš dost mincí, cizinče. Potřebuješ víc peněz...");
-                                break;
-                            } else {
-                                for (Crate crate : world.getCrates()) {
-                                    if (mapForCrate.getItemID() == crate.getPlanetID()) {
-                                        crate.setFound(true);
-                                        merchant.getMapsForCrates().remove(mapForCrate);
-                                        inventory.setCoins(inventory.getCoins() - mapForCrate.getItemPrice());
-                                        merchant.setCoins(merchant.getCoins() + mapForCrate.getItemPrice());
-                                        System.out.println("Děkuji! Hehehe... Skvělý výběr, cizinče!");
-                                        break;
-                                    }
-                                }
-                            }
-                        } catch (InputMismatchException e) {
-                            System.out.println("Cože? Tomu nerozumím! Zkus to znovu číslem.");
-                            sc.nextLine();
-                        }
-                    }
-                } else if (choice2 == 2) {
-                    if (inventory.getGemStones().isEmpty()) {
-                        System.out.println("Nemáš žádné drahokamy, cizinče. Škoda!");
-                        continue;
-                    }
-
-                    int soucet = 0;
-                    System.out.println("Ahhh, drahokamy! Ty mám rád! Vezmu si je všechny, hehehe!");
-
-                    for (GemStone gem : new ArrayList<>(inventory.getGemStones())) {
-                        soucet += gem.getItemPrice();
-                        inventory.getGemStones().remove(gem);
-                    }
-
-                    inventory.setCoins(inventory.getCoins() + soucet);
-                    System.out.println("Hehehe... Prodáno! Získal jsi " + soucet + " mincí.");
-                } else {
-                    System.out.println("To není v nabídce, cizinče. Zkus to znovu!");
-                }
-
             } catch (InputMismatchException e) {
                 System.out.println("Cože? Tomu nerozumím! Zkus to znovu číslem.");
                 sc.nextLine();
+                continue;
+            }
+
+            switch (choice2) {
+                case 0:
+                    System.out.println("Hehehe... Přijď zas!");
+                    inSubMenu = false;
+                    continue;
+
+                case 1:
+                    System.out.println("Co kupuješ?");
+                    System.out.println(merchant.printMapsForCrates());
+
+                    System.out.println("Vyber si, cizinče! (Zadej ID mapy nebo 0 pro návrat)");
+                    System.out.print(">> ");
+
+                    int mapId;
+                    try {
+                        mapId = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Cože? Tomu nerozumím! Zkus to znovu číslem.");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (mapId == 0) {
+                        System.out.println("Heh, změna plánu? Jak chceš!");
+                        break;
+                    }
+
+                    MapForCrate mapForCrate = merchant.locateMapFromId(mapId);
+
+                    if (mapForCrate == null) {
+                        System.out.println("Hmm… To nemám na skladě. Zkus něco jiného, nebo napiš 0 pro návrat.");
+                    } else if (inventory.getCoins() < mapForCrate.getItemPrice()) {
+                        System.out.println("Nemáš dost mincí, cizinče. Potřebuješ víc peněz...");
+                    } else {
+                        System.out.println(world.getCrates().size());
+                        for (int i = 0; i < world.getCrates().size(); i++) {
+                            if (mapForCrate.getItemID() == world.getCrates().get(i).getPlanetID()) {
+
+
+                                world.getCrates().get(i).setFound(true);
+
+
+                                for (int j = 0; j < merchant.getMapsForCrates().size(); j++) {
+                                    if (merchant.getMapsForCrates().get(j).getItemID() == mapId) {
+                                        merchant.getMapsForCrates().remove(j);
+                                        break;
+                                    }
+                                }
+
+                                inventory.setCoins(inventory.getCoins() - mapForCrate.getItemPrice());
+                                merchant.setCoins(merchant.getCoins() + mapForCrate.getItemPrice());
+                                System.out.println("Děkuji! Hehehe... Skvělý výběr, cizinče!");
+                                break;
+                            }
+                        }
+                        inSubMenu = false;
+                    }
+                    break;
+
+
+                case 2:
+                    if (inventory.getGemStones().isEmpty()) {
+                        System.out.println("Nemáš žádné drahokamy, cizinče. Škoda!");
+                        inSubMenu = false;
+                        continue;
+                    } else {
+                        int total = 0;
+                        for (GemStone gem : new ArrayList<>(inventory.getGemStones())) {
+                            total += gem.getItemPrice();
+                            inventory.getGemStones().remove(gem);
+                        }
+
+                        inventory.setCoins(inventory.getCoins() + total);
+                        System.out.println("Hehehe... Prodáno! Získal jsi " + total + " mincí.");
+                    }
+                    break;
+
+                default:
+                    System.out.println("To není v nabídce, cizinče. Zkus to znovu!");
             }
         }
     }

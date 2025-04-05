@@ -41,6 +41,7 @@ public class World {
         loadMedKits();
         loadWeapons();
         loadNpc();
+        loadCrates();
     }
 
     /**
@@ -132,7 +133,6 @@ public class World {
                 int health = Integer.parseInt(parts[2]);
                 String speech = parts[3];
                 int damage = Integer.parseInt(parts[4]);
-
                 int price = Integer.parseInt(parts[5]);
                 enemy.add(new Enemy(speech, name, id, health, damage, price));
             }
@@ -177,8 +177,9 @@ public class World {
                 String[] parts = line.split(";");
                 GemStone gemStone = null;
                 boolean found = false;
-                int planetID = Integer.parseInt(parts[2]);
-                String name = parts[3];
+                int planetID = Integer.parseInt(parts[0]);
+                String name = parts[1];
+                crates.add(new Crate(planetID, name));
             }
 
             loadGemStones();
@@ -196,7 +197,7 @@ public class World {
      * @author Vojtěch Malínek
      */
    private void loadGemStones(){
-        try (BufferedReader br = new BufferedReader(new FileReader("gemStones.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("gemStone.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");

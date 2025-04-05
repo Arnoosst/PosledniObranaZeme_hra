@@ -20,7 +20,7 @@ public class Inventory {
         this.inventory = new ArrayList<>();
         this.gemStones = new ArrayList<>();
         this.keys = 1;
-        this.coins = 500;
+        this.coins = 10000;
     }
 
 
@@ -82,7 +82,7 @@ public class Inventory {
         if (gemStone == null) {
             return false;
         }
-        inventory.add(gemStone);
+        gemStones.add(gemStone);
         return true;
     }
 

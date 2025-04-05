@@ -55,6 +55,7 @@ public class Console {
         commands.put("zautocit", new Attack(world, player, inventory, gamePrints));
         commands.put("staty", new ShowStats(inventory, player));
         commands.put("obchod", new MerchantCommand(world, merchant, inventory, scanner));
+        commands.put("bedna", new UnlockCrate(world, inventory));
 
     }
 
@@ -66,7 +67,7 @@ public class Console {
      */
     public void executeCommand() {
         System.out.println(">>");
-        String command = scanner.nextLine();
+        String command = scanner.next();
         if (commands.containsKey(command)) {
             System.out.println(commands.get(command).execute());
             exit = commands.get(command).exit();
