@@ -182,7 +182,7 @@ public class MerchantCommand extends Command {
             System.out.println("1. Koupit mapu pro bednu, která má drahokam");
             System.out.println("2. Prodat drahokamy");
             System.out.println("0. Návrat");
-            System.out.print(">> ");
+            System.out.println(">> ");
             try {
                 choice2 = sc.nextInt();
                 sc.nextLine();
@@ -203,7 +203,7 @@ public class MerchantCommand extends Command {
                     System.out.println(merchant.printMapsForCrates());
 
                     System.out.println("Vyber si, cizinče! (Zadej ID mapy nebo 0 pro návrat)");
-                    System.out.print(">> ");
+                    System.out.println(">> ");
 
                     int mapId;
                     try {
@@ -275,10 +275,6 @@ public class MerchantCommand extends Command {
             }
         }
     }
-
-
-    //balancovat hru
-    //mozna pridat do konstruktoru ty crate idk
 
     @Override
     public boolean exit() {

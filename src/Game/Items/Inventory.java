@@ -20,7 +20,7 @@ public class Inventory {
         this.inventory = new ArrayList<>();
         this.gemStones = new ArrayList<>();
         this.keys = 1;
-        this.coins = 10000;
+        this.coins = 650;
     }
 
 
