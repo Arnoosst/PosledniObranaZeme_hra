@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -138,6 +139,7 @@ public class GamePrints {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+
         while (true) {
             System.out.println("===================================");
             System.out.println("🚀  POSLEDNÍ OBRANA ZEMĚ  🌍");
@@ -146,22 +148,26 @@ public class GamePrints {
             System.out.println("2.  Nápověda");
             System.out.println("3.  Preskocit intro");
             System.out.print("Vyber možnost: \n>> \n");
+            try {
+                choice = scanner.nextInt();
 
-            choice = scanner.nextInt();
-
-            switch (choice) {
-                case 1:
-                    System.out.println("Hra se spouští Připrav se na bitvu!");
-                    loadStartGame();
-                    loadDoctor();
-                    return;
-                case 2:
-                    loadHelp();
-                    break;
-                case 3:
-                    return;
-                default:
-                    System.out.println("Neplatná volba, zkus to znovu.");
+                switch (choice) {
+                    case 1:
+                        System.out.println("Hra se spouští Připrav se na bitvu!");
+                        loadStartGame();
+                        loadDoctor();
+                        return;
+                    case 2:
+                        loadHelp();
+                        break;
+                    case 3:
+                        return;
+                    default:
+                        System.out.println("Neplatná volba, zkus to znovu.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("zadej cislo");
+                scanner.nextLine();
             }
         }
     }
