@@ -55,6 +55,14 @@ public class Merchant {
         return null;
     }
 
+
+    /**
+     * Finds a map in the merchant's crate map list by its ID.
+     *
+     * @author Vojtěch Malínek
+     * @param id The ID of the map.
+     * @return The map if found, otherwise null.
+     */
     public MapForCrate locateMapFromId(int id){
         for(int i = 0; i < mapsForCrates.size(); i++){
             if (id == mapsForCrates.get(i).getItemID() ){
@@ -70,6 +78,7 @@ public class Merchant {
     /**
      * Allows the merchant to buy an item and add it to the inventory.
      *
+     * @author Vojtěch Malínek
      * @param item The item to be purchased.
      * @return True if the item was successfully bought, otherwise false.
      */
@@ -89,6 +98,7 @@ public class Merchant {
     /**
      * Sells an item from the merchant's inventory.
      *
+     * @author Vojtěch Malínek
      * @param id The ID of the item to sell.
      * @return The sold item if it exists, otherwise null.
      */
@@ -108,6 +118,8 @@ public class Merchant {
 
     /**
      * Loads medkits from a file and adds them to the merchant's inventory.
+     *
+     * @author Vojtěch Malínek
      */
     public  void loadMedKits() {
         try (BufferedReader br = new BufferedReader(new FileReader("medkitsMerchant.txt"))) {
@@ -130,6 +142,8 @@ public class Merchant {
 
     /**
      * Loads weapons from a file and adds them to the merchant's inventory.
+     *
+     * @author Vojtěch Malínek
      */
     public  void loadWeapons() {
         try (BufferedReader br = new BufferedReader(new FileReader("weaponsMerchant.txt"))) {
@@ -150,6 +164,12 @@ public class Merchant {
 
     }
 
+
+    /**
+     * Loads and prints merchant-related ASCII art or description from file.
+     *
+     * @author Vojtěch Malínek
+     */
     public void loadMerchnatPrint(){
         try (BufferedReader br = new BufferedReader(new FileReader("merchantPrint.txt"))) {
             String line;
@@ -163,6 +183,12 @@ public class Merchant {
         }
     }
 
+
+    /**
+     * Loads maps for crates from a file and adds them to the merchant's list.
+     *
+     * @author Vojtěch Malínek
+     */
     public void loadMapsForCrates() {
         try (BufferedReader br = new BufferedReader(new FileReader("mapForCrates.txt"))) {
             String line;
@@ -171,7 +197,8 @@ public class Merchant {
                 String name = parts[1];
                 int id = Integer.parseInt(parts[0]);
                 int price = Integer.parseInt(parts[2]);
-                mapsForCrates.add(new MapForCrate(name, id, price));
+                String info = parts[3];
+                mapsForCrates.add(new MapForCrate(name, id, price, info));
             }
         } catch (FileNotFoundException e) {
             System.out.println("Soubor nebyl nalezen. \"mapForCrates.txt\"");
@@ -186,6 +213,7 @@ public class Merchant {
     /**
      * Prints the merchant's inventory.
      *
+     * @author Vojtěch Malínek
      * @return A string representing the items available for sale.
      */
     public String printSortiment() {
@@ -201,7 +229,12 @@ public class Merchant {
     }
 
 
-
+    /**
+     * Prints the merchant's mapsForCrates.
+     *
+     * @author Vojtěch Malínek
+     * @return A string representing the items available for sale.
+     */
     public String printMapsForCrates() {
         String x;
         x = "### Mapy Merchanta ### \n";

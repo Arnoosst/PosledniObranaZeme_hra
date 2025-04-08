@@ -47,9 +47,6 @@ public class Crate {
         return planetID;
     }
 
-    public void setPlanetID(int planetID) {
-        this.planetID = planetID;
-    }
 
     public String getName() {
         return name;

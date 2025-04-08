@@ -57,8 +57,6 @@ public class Move extends Command {
                 if (temp == 8) {
                     if (World.getKillCount() <= 5) {
                         return "Musíš porazit všechny bosse, než se dostaneš na finální planetu!";
-                    } else if (World.getKillCount() == 6) {
-                        return "Přistál jsi na lodi Archona Xar'quna.";
                     }
                 }
 

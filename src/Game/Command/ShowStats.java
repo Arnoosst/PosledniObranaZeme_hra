@@ -36,6 +36,7 @@ public class ShowStats extends Command {
                 "⚔️ Poškození: " + (player.getDamage() + player.damageIncrease(inv)) + "\n" +
                 "💰 Mince: " + inv.getCoins() + "\n" +
                 "🔑 Klíče: " + inv.getKeys() + "\n" +
+                "\uD83D\uDDFA\uFE0F Mapy: " + inv.getMapForCrates().size() + "\n" +
                 "💎 Drahokamy: " + inv.getGemStones().size() + "\n";
     }
 

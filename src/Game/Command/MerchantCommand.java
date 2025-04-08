@@ -112,7 +112,7 @@ public class MerchantCommand extends Command {
                 if (itemToBuy == null) {
                     System.out.println("Hmm… To zboží nemám. Zkus jiné ID nebo napiš 0 pro návrat.");
                 } else if (inventory.getCoins() < itemToBuy.getItemPrice()) {
-                    System.out.println("Heh… Nemáš dost peněz, cizinče. Co třeba sehnat víc?");
+                    System.out.println("Heh… Nemáš dost peněz, cizinče. Co třeba sehnat víc? nebo napiš 0 pro návrat.");
                 } else {
                     inventory.addItem(itemToBuy);
                     inventory.setCoins(inventory.getCoins() - itemToBuy.getItemPrice());
@@ -235,8 +235,10 @@ public class MerchantCommand extends Command {
                                 world.getCrates().get(i).setFound(true);
 
 
+
                                 for (int j = 0; j < merchant.getMapsForCrates().size(); j++) {
                                     if (merchant.getMapsForCrates().get(j).getItemID() == mapId) {
+                                        inventory.addMapGemstone(merchant.getMapsForCrates().get(j));
                                         merchant.getMapsForCrates().remove(j);
                                         break;
                                     }

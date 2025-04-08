@@ -56,6 +56,7 @@ public class Console {
         commands.put("staty", new ShowStats(inventory, player));
         commands.put("obchod", new MerchantCommand(world, merchant, inventory, scanner));
         commands.put("bedna", new UnlockCrate(world, inventory));
+        commands.put("mapa", new UseMap(inventory));
 
     }
 

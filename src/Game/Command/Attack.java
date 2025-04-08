@@ -87,6 +87,8 @@ public class Attack extends Command {
 
                 }
                 if (World.getCurrentLocation() == 8) {
+                    System.out.println("⚠️ Boj skončil! ⚠️");
+                    System.out.println();
                     gamePrints.loadWon();
                     System.exit(0);
                 }

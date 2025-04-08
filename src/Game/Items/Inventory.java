@@ -12,6 +12,7 @@ public class Inventory {
 
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<GemStone> gemStones = new ArrayList<>();
+    private ArrayList<MapForCrate> mapForCrates = new ArrayList<>();
     private int coins;
     private int keys;
 
@@ -19,8 +20,9 @@ public class Inventory {
     public Inventory() {
         this.inventory = new ArrayList<>();
         this.gemStones = new ArrayList<>();
+        this.mapForCrates = new ArrayList<>();
         this.keys = 1;
-        this.coins = 650;
+        this.coins = 2000;
     }
 
 
@@ -50,6 +52,7 @@ public class Inventory {
      * Removes an Item from the inventory.
      * If the item is null, nothing will be removed.
      *
+     * @author Vojtěch Malínek
      * @param item the item to be removed from the inventory.
      * @return code true if the item was successfully removed, false otherwise.
      */
@@ -66,6 +69,7 @@ public class Inventory {
     /**
      * Locates an Item by its unique ID in the inventory.
      *
+     * @author Vojtěch Malínek
      * @param id the ID of the item to be located.
      * @return the item with the specified ID, or null if no item with the given ID is found.
      */
@@ -78,11 +82,35 @@ public class Inventory {
         return null;
     }
 
+
+    /**
+     * Adds a GemStone to the inventory.
+     *
+     * @author Vojtěch Malínek
+     * @param gemStone the gemstone to add.
+     * @return true if the gemstone was successfully added, false otherwise.
+     */
     public boolean addGemStone(GemStone gemStone) {
         if (gemStone == null) {
             return false;
         }
         gemStones.add(gemStone);
+        return true;
+    }
+
+
+    /**
+     * Adds a map for crate to the inventory.
+     *
+     * @author Vojtěch Malínek
+     * @param mapGemstone the crate map to add.
+     * @return true if the map was successfully added, false otherwise.
+     */
+    public boolean addMapGemstone(MapForCrate mapGemstone) {
+        if (mapGemstone == null) {
+            return false;
+        }
+        mapForCrates.add(mapGemstone);
         return true;
     }
 
@@ -93,6 +121,7 @@ public class Inventory {
      * Returns a string representation of the inventory contents.
      * The list includes each item’s name, ID, and price.
      *
+     * @author Vojtěch Malínek
      * @return a formatted string representing the inventory.
      */
     public String printInventory() {
@@ -141,5 +170,13 @@ public class Inventory {
 
     public void setGemStones(ArrayList<GemStone> gemStones) {
         this.gemStones = gemStones;
+    }
+
+    public ArrayList<MapForCrate> getMapForCrates() {
+        return mapForCrates;
+    }
+
+    public void setMapForCrates(ArrayList<MapForCrate> mapForCrates) {
+        this.mapForCrates = mapForCrates;
     }
 }

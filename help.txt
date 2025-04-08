@@ -25,5 +25,7 @@ Tvým úkolem je bránit Zemi před mimozemskou invazí!
 🔹 medkit – Použití medkitu pro léčení
 🔹 staty – Zobrazení statistik hráče a inventáře
 🔹 obchod – Otevře obchod (pouze na Zemi)
+🔹 mapa – Zobrazí mapy, které vlastníš (slouží k nalezení beden)
+🔹 bedna – Pokusí se otevřít bednu, pokud je v lokaci a máš její mapu
 🔹 konec – Ukončení hry
 🔹 pomoc – Zobrazení této nápovědy
