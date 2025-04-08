@@ -328,10 +328,6 @@ public class World {
     }
 
 
-    public void setNpc(ArrayList<Entity> npc) {
-        this.npc = npc;
-    }
-
 
     public static void setKillCount(int killCount) {
         World.killCount = killCount;

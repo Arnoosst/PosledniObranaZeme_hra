@@ -276,10 +276,6 @@ public class Merchant {
         return mapsForCrates;
     }
 
-    public void setMapsForCrates(ArrayList<MapForCrate> mapsForCrates) {
-        this.mapsForCrates = mapsForCrates;
-    }
-
     @Override
     public String toString() {
         return "Merchant{" +

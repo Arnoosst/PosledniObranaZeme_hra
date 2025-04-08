@@ -22,7 +22,7 @@ public class Inventory {
         this.gemStones = new ArrayList<>();
         this.mapForCrates = new ArrayList<>();
         this.keys = 1;
-        this.coins = 2000;
+        this.coins = 500;
     }
 
 
